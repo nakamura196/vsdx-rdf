@@ -1,0 +1,5 @@
+vsdx
+rdflib
+nbdev
+pyvis
+requests
