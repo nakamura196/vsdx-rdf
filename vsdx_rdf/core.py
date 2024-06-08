@@ -9,6 +9,7 @@ import rdflib
 import os
 from pprint import pprint
 import requests
+from .visualize import VisualizeClient
 
 # %% ../nbs/00_core.ipynb 4
 class Client:
@@ -34,7 +35,7 @@ class Client:
 
                 text = f.read()
 
-            Client.visualize(text, output_path)
+            VisualizeClient.graph_draw_by_kanzaki(text, output_path)
 
 
 
@@ -114,6 +115,10 @@ class Client:
                 # print(child.text)
 
                 shape_name = child.shape_name
+                master_page_ID = child.master_page_ID
+
+                # print(master_page_ID)
+
                 # shage_type = child.shape_type
 
                 
@@ -133,10 +138,19 @@ class Client:
 
                         # print(child.geometry)
 
-                        if "Ellipse" in str(child.geometry):
-                            shape_name = "Circle"
-                        else:
+                        if master_page_ID == "7":
+
                             shape_name = "Rectangle"
+
+                        elif "Ellipse" in str(child.geometry):
+                            shape_name = "Circle"
+                        
+                        elif "RelLineTo" in str(child.geometry):
+                            shape_name = "Rectangle"
+                        
+                        else:
+                            # shape_name = "Rectangle"
+                            shape_name = "Circle"
                             pass
 
                         # continue
@@ -161,16 +175,21 @@ class Client:
                 "edges": edges
             }
 
-        '''
+        
         if self.verbose:
             print("----- resultsByPage -----")
             pprint(resultsByPage)
             print("-------------------------")
-        '''
+        # ''''''
 
         self.resulsByPage = resultsByPage
 
     def convertToRdf(self):
+
+        prefixes = {
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "dcterms": "http://purl.org/dc/terms/",
+        }
 
         resultsByPage = self.resulsByPage
 
@@ -185,6 +204,10 @@ class Client:
             # RDFグラフを初期化
             g = rdflib.Graph()
 
+            for prefix in prefixes:
+                g.bind(prefix, rdflib.Namespace(prefixes[prefix]))
+
+            '''
             # 名前空間の定義
             namespace = rdflib.Namespace("http://example.org/node/")
 
@@ -193,6 +216,10 @@ class Client:
             ns_property = rdflib.Namespace("http://example.org/edge/")
 
             g.bind("edge", ns_property)
+            '''
+
+            namespace = rdflib.Namespace("http://example.org/")
+            g.bind("ex", namespace)
 
             uris = {}
 
@@ -203,11 +230,32 @@ class Client:
 
                 if info["type"] == "resource":
 
-                    name = info["name"].replace("\n", "_")
+                    name = info["name"] # .replace("\n", "_")
 
-                    print(info["name"])
+                    print("name", name)
 
-                    node_uri = namespace[name]
+                    if name.startswith("http"):
+                        node_uri = name
+
+                    elif ":" in name:
+                        
+                        for prefix in prefixes:
+                                
+                            if prefix in name:
+    
+                                name = name.replace(prefix + ":", prefixes[prefix])
+
+                                break
+
+                        node_uri = name
+
+                    else:
+
+                        name = name.replace("\n", "_")
+
+                        # print(info["name"])
+
+                        node_uri = namespace[name]
 
                     if node_id not in uris:
                             
@@ -243,7 +291,19 @@ class Client:
 
                 name = rel_info['name'] or "base"
 
-                property_uri = rdflib.URIRef(ns_property[name])
+                if name.startswith("http"):
+                    property_uri = rdflib.URIRef(name)
+                elif ":" in name:
+                    for prefix in prefixes:
+                        if prefix in name:
+                            name = name.replace(prefix + ":", prefixes[prefix])
+                            break
+                    property_uri = rdflib.URIRef(name)
+
+                else:
+                    name = name.replace("\n", "_")
+                    property_uri = rdflib.URIRef(namespace[name])
+
                 if to_id in literals:
                     g.add((rdflib.URIRef(from_uri), property_uri, rdflib.Literal(literals[to_id])))
 
@@ -291,31 +351,4 @@ class Client:
         # print("done")
 
         return paths
-
-    @staticmethod
-    def visualize(text, output_path):
-
-        # POSTリクエストに必要なデータ
-        url = "https://www.kanzaki.com/works/2009/pub/graph-draw"
-
-        data = {
-            "RDF": text,
-            "rtype": "turtle",
-            "gtype": "png",
-            "rankdir": "lr",
-            "qname": "on",
-        }
-
-        # POSTリクエストを送信
-        response = requests.post(url, data=data)
-
-        # 応答がPNG画像でない場合、内容を確認
-        if response.headers['Content-Type'] != 'image/png':
-            print("応答はPNG画像ではありません。内容を表示します:")
-            # print(response.text[:500])  # 最初の500文字を表示 # [:500]
-        else:
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
-            # 応答をPNGファイルとして保存
-            with open(output_path, 'wb') as f:
-                f.write(response.content)
 

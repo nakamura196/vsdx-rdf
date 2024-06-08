@@ -10,5 +10,7 @@ d = { 'settings': { 'branch': 'main',
                                'vsdx_rdf.core.Client.convertToRdf': ('core.html#client.converttordf', 'vsdx_rdf/core.py'),
                                'vsdx_rdf.core.Client.createNodesAndEdges': ('core.html#client.createnodesandedges', 'vsdx_rdf/core.py'),
                                'vsdx_rdf.core.Client.main': ('core.html#client.main', 'vsdx_rdf/core.py'),
-                               'vsdx_rdf.core.Client.save': ('core.html#client.save', 'vsdx_rdf/core.py'),
-                               'vsdx_rdf.core.Client.visualize': ('core.html#client.visualize', 'vsdx_rdf/core.py')}}}
+                               'vsdx_rdf.core.Client.save': ('core.html#client.save', 'vsdx_rdf/core.py')},
+            'vsdx_rdf.visualize': { 'vsdx_rdf.visualize.VisualizeClient': ('visualize.html#visualizeclient', 'vsdx_rdf/visualize.py'),
+                                    'vsdx_rdf.visualize.VisualizeClient.graph_draw_by_kanzaki': ( 'visualize.html#visualizeclient.graph_draw_by_kanzaki',
+                                                                                                  'vsdx_rdf/visualize.py')}}}
