@@ -1,0 +1,12 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:BOB ex:knows ex:Alice ;
+    ex:type foaf:Person ;
+    foaf:topic_interest <http://www.wikidata.org/entity/Q12418> .
+
+ex:subject ex:predicate "リテラル" .
+
+<http://www.wikidata.org/entity/Q12418> dcterms:title "Mona Lisa" .
+

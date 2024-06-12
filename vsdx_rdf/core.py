@@ -10,12 +10,47 @@ import os
 from pprint import pprint
 import requests
 from .visualize import VisualizeClient
+from glob import glob
 
 # %% ../nbs/00_core.ipynb 4
 class Client:
 
     @staticmethod
-    def main(path, output_dir, page=-1, verbose=False):
+    def convert(input_path: str, output_dir: str) -> None:
+        """
+        Convert all Visio files found at the specified input path to RDF and visualize them.
+
+        Args:
+            input_path (str): A glob pattern to specify which files to process.
+            output_dir (str): The directory where output files will be saved.
+        """
+        files = glob(input_path, recursive=True)
+        files.sort()
+
+        for filename in files:
+            print("Processing:", filename)
+
+            if "佐川" not in filename:
+                # continue
+                pass
+
+            # output_dir = "/Users/nakamura/Library/CloudStorage/OneDrive-TheUniversityofTokyo/visio/output/" + filename.split('/')[-2] + "/" + filename.split('/')[-1].replace('.vsdx', '')
+            output_file_dir = output_dir + "/" + filename.split('/')[-1].replace('.vsdx', '')
+            Client.main(filename, output_file_dir , verbose=False) # False
+            # , page=1 
+            # break
+
+    @staticmethod
+    def main(path: str, output_dir: str, page: int = -1, verbose: bool = False) -> None:
+        """
+        Process a single Visio file: parse it, convert it to RDF, and create visualizations.
+
+        Args:
+            path (str): The path to the Visio file.
+            output_dir (str): The directory to save output files.
+            page (int): Optional; specify which page of the Visio file to process, -1 means all pages.
+            verbose (bool): Optional; True for detailed output, False by default.
+        """
 
         client = Client(path, verbose=verbose)
 
@@ -40,6 +75,13 @@ class Client:
 
 
     def __init__(self, path, verbose=False):
+        """
+        Initialize the Client with a specific Visio file.
+
+        Args:
+            path (str): The path to the Visio file.
+            verbose (bool): Optional; True to enable detailed logging, False by default.
+        """
         self.vis = VisioFile(path)
 
         self.verbose = verbose
@@ -107,21 +149,12 @@ class Client:
 
             for child in children:
 
-                # print(child)
-
                 child_id = child.ID
                 child_name = child.text
-
-                # print(child.text)
 
                 shape_name = child.shape_name
                 master_page_ID = child.master_page_ID
 
-                # print(master_page_ID)
-
-                # shage_type = child.shape_type
-
-                
 
                 if child_id in edges:
                         
@@ -135,8 +168,6 @@ class Client:
                     '''
 
                     if shape_name is None:
-
-                        # print(child.geometry)
 
                         if master_page_ID == "7":
 
@@ -230,9 +261,7 @@ class Client:
 
                 if info["type"] == "resource":
 
-                    name = info["name"] # .replace("\n", "_")
-
-                    print("name", name)
+                    name = info["name"]
 
                     if name.startswith("http"):
                         node_uri = name
@@ -253,8 +282,6 @@ class Client:
 
                         name = name.replace("\n", "_")
 
-                        # print(info["name"])
-
                         node_uri = namespace[name]
 
                     if node_id not in uris:
@@ -269,10 +296,10 @@ class Client:
 
             # リレーションシップをグラフに追加
             for rel_id, rel_info in edges.items():
-                # from_id = namespace[rel_info['from']]
-                # to_id = namespace[rel_info['to']]
 
-                
+                if "from" not in rel_info:
+                    print("from not found")
+                    continue
 
                 from_id = rel_info['from']
 
