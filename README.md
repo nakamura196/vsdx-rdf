@@ -10,7 +10,7 @@ library, which is a Python library for reading and writing Visio files.
 ## Install
 
 ``` sh
-pip install vsdx_rdf
+pip install git+https://github.com/nakamura196/vsdx-rdf.git
 ```
 
 ## How to use
