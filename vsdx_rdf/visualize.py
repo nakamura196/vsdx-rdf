@@ -10,7 +10,7 @@ import requests
 # %% ../nbs/01_visualize.ipynb 4
 class VisualizeClient:
     @staticmethod
-    def graph_draw_by_kanzaki(text, output_path):
+    def graph_draw_by_kanzaki(text, output_path, gtype="png"):
         """
         指定されたRDF/Turtle形式のテキストデータをグラフとして可視化し、結果をPNGファイルとして保存します。
         
@@ -25,7 +25,7 @@ class VisualizeClient:
         data = {
             "RDF": text,
             "rtype": "turtle",
-            "gtype": "png",
+            "gtype": gtype, # "png",
             "rankdir": "lr",
             "qname": "on",
         }
@@ -33,10 +33,17 @@ class VisualizeClient:
         # POSTリクエストを送信
         response = requests.post(url, data=data)
 
+        if gtype == "svg":
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            # 応答をSVGファイルとして保存
+            with open(output_path, 'w') as f:
+                f.write(response.text)
+
         # 応答がPNG画像でない場合、内容を確認
-        if response.headers['Content-Type'] != 'image/png':
-            print("応答はPNG画像ではありません。内容を表示します:")
+        elif response.headers['Content-Type'] != 'image/png':
+            print("応答はPNG画像ではありません。")
             # print(response.text[:500])  # 最初の500文字を表示 # [:500]
+        
         else:
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             # 応答をPNGファイルとして保存

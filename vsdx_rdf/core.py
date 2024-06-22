@@ -11,18 +11,23 @@ from pprint import pprint
 import requests
 from .visualize import VisualizeClient
 from glob import glob
+from typing import Dict, Any, List
+import requests
+from lxml import etree
+from rdflib import Graph
 
 # %% ../nbs/00_core.ipynb 4
 class Client:
 
     @staticmethod
-    def convert(input_path: str, output_dir: str) -> None:
+    def convert(input_path: str, output_dir: str, is_download: bool = False) -> None:
         """
         Convert all Visio files found at the specified input path to RDF and visualize them.
 
         Args:
             input_path (str): A glob pattern to specify which files to process.
             output_dir (str): The directory where output files will be saved.
+            is_download (bool): Optional; True to download the files, False by default.
         """
         files = glob(input_path, recursive=True)
         files.sort()
@@ -36,12 +41,12 @@ class Client:
 
             # output_dir = "/Users/nakamura/Library/CloudStorage/OneDrive-TheUniversityofTokyo/visio/output/" + filename.split('/')[-2] + "/" + filename.split('/')[-1].replace('.vsdx', '')
             output_file_dir = output_dir + "/" + filename.split('/')[-1].replace('.vsdx', '')
-            Client.main(filename, output_file_dir , verbose=False) # False
+            Client.main(filename, output_file_dir , verbose=False, is_download=is_download) # False
             # , page=1 
             # break
 
     @staticmethod
-    def main(path: str, output_dir: str, page: int = -1, verbose: bool = False) -> None:
+    def main(path: str, output_dir: str, page: int = -1, verbose: bool = False, is_download: bool = False) -> None:
         """
         Process a single Visio file: parse it, convert it to RDF, and create visualizations.
 
@@ -50,11 +55,12 @@ class Client:
             output_dir (str): The directory to save output files.
             page (int): Optional; specify which page of the Visio file to process, -1 means all pages.
             verbose (bool): Optional; True for detailed output, False by default.
+            is_download (bool): Optional; True to download the file, False by default.
         """
 
-        client = Client(path, verbose=verbose)
+        client = Client(path, verbose=verbose, is_download=is_download)
 
-        client.createNodesAndEdges(page)
+        client.create_nodes_and_edges(page)
         client.convertToRdf()
 
         paths = client.save(output_dir)
@@ -71,89 +77,67 @@ class Client:
                 text = f.read()
 
             VisualizeClient.graph_draw_by_kanzaki(text, output_path)
+            VisualizeClient.graph_draw_by_kanzaki(text, output_path.replace(".png", ".svg"), gtype="svg")
 
 
-
-    def __init__(self, path, verbose=False):
+    def __init__(self, path, verbose=False, is_download=False):
         """
         Initialize the Client with a specific Visio file.
 
         Args:
             path (str): The path to the Visio file.
             verbose (bool): Optional; True to enable detailed logging, False by default.
+            is_download (bool): Optional; True to download the file, False by default.
         """
         self.vis = VisioFile(path)
 
         self.verbose = verbose
+        self.is_download = is_download
 
-    def createNodesAndEdges(self, page):
+    def create_nodes_and_edges(self, page_index: int) -> None:
+        """
+        Creates nodes and edges based on the provided page index from the visualization pages.
+        It collects and organizes data about connections and shapes on each page.
 
-        vis = self.vis
+        Args:
+        page_index (int): Index of the page to process. If -1, all pages are processed.
+        """
 
-        resultsByPage = {}
+        results_by_page: Dict[int, Dict[str, Any]] = {}
 
         # pages = [vis.pages[1]]
 
-        if page == -1:
+        # Determine the specific pages to process
+        pages = self.vis.pages if page_index == -1 else [self.vis.pages[page_index]]
 
-            pages = vis.pages
 
-        else:
-                
-            pages = [vis.pages[page]]
-
-        for page, i  in zip(pages, range(len(pages))):
-
-            # print(page)
-
+        for page, idx  in zip(pages, range(len(pages))):
             title = page.name
-
-            ####
-
             connects = page.connects
-
-            edges = {}
+            edges: Dict[str, Dict[str, Any]] = {}
 
             for connect in connects:
 
                 edge_id = connect.from_id
-
                 if edge_id not in edges:
-
                     edges[edge_id] = {}
 
-                # from_id = connect.from_id
-
-                from_id = None
-                to_id = None
-
                 if connect.from_rel == "BeginX":
-
-                    from_id = connect.to_id
-
-                    edges[edge_id]["from"] = from_id
-
-
+                    edges[edge_id]["from"] = connect.to_id
                 else:
-
-                    to_id = connect.to_id
-
-                    edges[edge_id]["to"] = to_id
+                    edges[edge_id]["to"] = connect.to_id
 
 
-            #### 
+            # Process each child shape to create nodes
+            nodes: Dict[str, Dict[str, str]] = {}
 
-            children = page.child_shapes
-
-            nodes = {}
-
-            for child in children:
+            for child in page.child_shapes:
 
                 child_id = child.ID
-                child_name = child.text
+                child_name = child.text.strip()
 
                 shape_name = child.shape_name
-                master_page_ID = child.master_page_ID
+                master_page_id = child.master_page_ID
 
 
                 if child_id in edges:
@@ -162,45 +146,25 @@ class Client:
 
                 else:
 
-                    '''
-                    if self.verbose:
-                        print(f"child_id: {child_id}, child_name: {child_name}, shape_name: {shape_name}, shage_type: {shage_type}")
-                    '''
-
                     if shape_name is None:
+                        shape_name = self.determine_shape_name(child, master_page_id)
 
-                        if master_page_ID == "7":
+                    # Add node information
+                    node_info = {"name": child_name}
 
-                            shape_name = "Rectangle"
-
-                        elif "Ellipse" in str(child.geometry):
-                            shape_name = "Circle"
-                        
-                        elif "RelLineTo" in str(child.geometry):
-                            shape_name = "Rectangle"
-                        
-                        else:
-                            # shape_name = "Rectangle"
-                            shape_name = "Circle"
-                            pass
-
-                        # continue
-                        # shape_name = "Circle" # 要検討
+                    if "Circle" in shape_name or "Ellipse" in shape_name:
+                        node_info["type"] = "resource"
+                    else:
+                        node_info["type"] = "literal"
 
                     nodes[child_id] = {
                         "name": child_name.strip()
                     }
 
-                    if "Circle" in shape_name or "Ellipse" in shape_name:
-
-                        nodes[child_id]["type"] = "resource"
-
-                    else:
-
-                        nodes[child_id]["type"] = "literal"
+                    nodes[child_id] = node_info
 
 
-            resultsByPage[i] = {
+            results_by_page[idx] = {
                 "title": title,
                 "nodes": nodes,
                 "edges": edges
@@ -209,11 +173,29 @@ class Client:
         
         if self.verbose:
             print("----- resultsByPage -----")
-            pprint(resultsByPage)
+            pprint(results_by_page)
             print("-------------------------")
-        # ''''''
 
-        self.resulsByPage = resultsByPage
+        self.results_by_page = results_by_page
+
+    def determine_shape_name(self, child: Any, master_page_id: str) -> str:
+        """
+        Determines the shape name based on the child's properties and master page ID.
+
+        Args:
+        child (Any): The child shape object.
+        master_page_id (str): ID of the master page to help determine the shape.
+
+        Returns:
+        str: A string indicating the shape type.
+        """
+        if master_page_id == "7":
+            return "Rectangle"
+        elif "Ellipse" in str(child.geometry):
+            return "Circle"
+        elif "RelLineTo" in str(child.geometry):
+            return "Rectangle"
+        return "Circle"  # Default case
 
     def convertToRdf(self):
 
@@ -222,7 +204,7 @@ class Client:
             "dcterms": "http://purl.org/dc/terms/",
         }
 
-        resultsByPage = self.resulsByPage
+        resultsByPage = self.results_by_page
 
         for page in resultsByPage:
 
@@ -285,6 +267,21 @@ class Client:
                         node_uri = namespace[name]
 
                     if node_id not in uris:
+
+                        print(node_uri)
+
+                        if self.is_download:
+
+                            g_extra = self.download(node_uri)
+
+                            if g_extra is not None:
+                                    
+                                # g += g_extra
+
+                                # 主語がnode_uriのトリプルだけをgに追加
+                                for s, p, o in g_extra:
+                                    if str(s) == node_uri:
+                                        g.add((s, p, o))
                             
                         uris[node_id] = node_uri
 
@@ -346,11 +343,20 @@ class Client:
             # RDFを出力
             # print(g.serialize(format='turtle'))
 
-            self.resulsByPage[page]["rdf"] = g # g.serialize(format='turtle').decode()
+            self.results_by_page[page]["rdf"] = g # g.serialize(format='turtle').decode()
 
     def save(self, output_dir):
+        """
+        Save the RDF data to a file.
 
-        resultsByPage = self.resulsByPage
+        Args:
+            output_dir (str): The directory to save the output files.
+
+        Returns:
+            List[str]: A list of paths to the saved files.
+        """
+
+        resultsByPage = self.results_by_page
 
         paths = []
 
@@ -379,3 +385,47 @@ class Client:
 
         return paths
 
+    def download(self, url: str) -> None:
+        """
+        Download RDF data from a specific URL.
+
+        Args:
+            url (str): The URL to download RDF data from.
+            
+        Returns:
+            Graph: An RDF graph object containing the downloaded data.
+        """
+
+        # Headers to request RDF/XML format
+        headers = {
+            'Accept': 'application/rdf+xml'
+        }
+
+        # Sending a GET request to the URL
+        response = requests.get(url, headers=headers)
+
+        # Checking if the request was successful
+        if response.status_code == 200:
+
+            tree = etree.fromstring(response.content)
+
+            # XML Namespace for RDF
+            rdf_ns = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}"
+            
+            # Remove all nodeID attributes
+            for element in tree.xpath('//*[@rdf:nodeID]', namespaces={'rdf': "http://www.w3.org/1999/02/22-rdf-syntax-ns#"}):
+                element.attrib.pop(rdf_ns + 'nodeID')
+
+            modified_xml = etree.tostring(tree, pretty_print=True).decode('utf-8')
+
+            g = Graph()
+
+            g.parse(data=modified_xml, format='xml')
+
+            # g.serialize(destination='output.ttl', format='turtle')
+
+            return g
+        else:
+            print("Failed to retrieve RDF data. Status code:", response.status_code)
+
+        return None

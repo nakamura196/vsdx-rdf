@@ -3,3 +3,4 @@ rdflib
 nbdev
 pyvis
 requests
+lxml

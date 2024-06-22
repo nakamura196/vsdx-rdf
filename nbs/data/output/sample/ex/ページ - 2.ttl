@@ -1,0 +1,7 @@
+@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:BOB ex:knows ex:Alice ;
+    ex:type foaf:Person ;
+    foaf:topic_interest <https://jpsearch.go.jp/entity/chname/葛飾北斎> .
+
