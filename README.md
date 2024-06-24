@@ -20,9 +20,22 @@ print it.
 
 ``` python
 INPUT_FILE = "./data/input/sample/*.vsdx"
-OUTPUT_FILE = "./data/output/sample"
+OUTPUT_FILE = "./data/output"
 
 Client.convert(INPUT_FILE, OUTPUT_FILE)
+```
+
+    Processing: ./data/input/sample/ex.vsdx
+
+`is_download` is a flag that specifies whether to download the linked
+RDF data. If `is_download` is `True`, the linked RDF data is downloaded
+and stored in output files.
+
+``` python
+INPUT_FILE = "./data/input/sample/*.vsdx"
+OUTPUT_FILE = "./data/output_extra"
+
+Client.convert(INPUT_FILE, OUTPUT_FILE, is_download=True)
 ```
 
     Processing: ./data/input/sample/ex.vsdx

@@ -1,0 +1,62 @@
+@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://schema.org/> .
+@prefix ns2: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+foaf:Person a rdfs:Class,
+        owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "A person." ;
+    rdfs:isDefinedBy foaf: ;
+    rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>,
+        foaf:Agent ;
+    owl:disjointWith foaf:Organization,
+        foaf:Project ;
+    owl:equivalentClass ns1:Person,
+        <http://www.w3.org/2000/10/swap/pim/contact#Person> ;
+    ns2:term_status "stable" .
+
+ex:BOB ex:knows ex:Alice ;
+    ex:type foaf:Person ;
+    foaf:topic_interest <https://jpsearch.go.jp/entity/chname/葛飾北斎> .
+
+<https://jpsearch.go.jp/entity/chname/葛飾北斎> a <https://jpsearch.go.jp/term/type/Agent>,
+        <https://jpsearch.go.jp/term/type/Person> ;
+    rdfs:label "葛飾北斎" ;
+    ns1:birthDate <https://jpsearch.go.jp/entity/time/1760> ;
+    ns1:deathDate <https://jpsearch.go.jp/entity/time/1849> ;
+    ns1:description "1760?-1849, 江戸時代後期の浮世絵師。姓は川村氏、幼名は時太郎、のち鉄蔵。通称は中島八右衛門。号は勝川春朗、宗理、戴斗、為一、画狂老人、卍など。" ;
+    ns1:image <https://commons.wikimedia.org/wiki/Special:FilePath/Hokusai_portrait_whiteBackground.png?width=350> ;
+    ns1:name "Katsushika, Hokusai"@en,
+        "かつしか北斎"@ja,
+        "前北斎"@ja,
+        "前北斎卍"@ja,
+        "前北斎為一"@ja,
+        "前北斎為一老人"@ja,
+        "勝川春朗"@ja,
+        "北斉"@ja,
+        "北斉載斗改葛飾為一"@ja,
+        "北斎"@ja,
+        "北斎主人"@ja,
+        "北斎宗理"@ja,
+        "北斎為一卍"@ja,
+        "画狂人北斎"@ja,
+        "葛飾北斎"@ja,
+        "葛飾卍老人"@ja,
+        "かつしか ほくさい"@ja-hira,
+        "カツシカ ホクサイ"@ja-kana ;
+    ns1:subjectOf <https://jpsearch.go.jp/data/nij15-nijl_nijl_nijl_kotengakutougouhyakka_hagajinmeijiten_00029172> ;
+    ns1:url <https://jpsearch.go.jp/gallery/ndl-xbzl6VVOpkhjzlg> ;
+    rdfs:isDefinedBy <https://jpsearch.go.jp/entity/chname/> ;
+    owl:sameAs <http://collection.britishmuseum.org/id/person-institution/1820>,
+        <http://data.bnf.fr/ark:/12148/cb124954814#about>,
+        <http://dbpedia.org/resource/Hokusai>,
+        <http://edan.si.edu/saam/id/person-institution/2267>,
+        <http://id.ndl.go.jp/auth/entity/00270331>,
+        <http://ja.dbpedia.org/resource/葛飾北斎>,
+        <http://lod.ac/id/1626>,
+        <http://viaf.org/viaf/69033717>,
+        <http://www.wikidata.org/entity/Q5586> .
+

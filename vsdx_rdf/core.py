@@ -196,8 +196,33 @@ class Client:
         elif "RelLineTo" in str(child.geometry):
             return "Rectangle"
         return "Circle"  # Default case
+    
+    def fix_subject_str(self, subject_str: str) -> str:
+        """
+        Fixes the subject string by removing unnecessary parts.
+
+        Args:
+        subject_str (str): The subject string to fix.
+
+        Returns:
+        str: The fixed subject string.
+        """
+
+        '''
+        if "crid" in subject_str:
+
+            subject_str = subject_str.replace(".rdf", "")
+        '''
+
+        return subject_str
 
     def convertToRdf(self):
+        """
+        Converts the nodes and edges to RDF format.
+
+        Returns:
+        str: The RDF data.
+        """
 
         prefixes = {
             "foaf": "http://xmlns.com/foaf/0.1/",
@@ -215,7 +240,7 @@ class Client:
             edges = resultsByPage[page]["edges"]
 
             # RDFグラフを初期化
-            g = rdflib.Graph()
+            g = rdflib.Graph(bind_namespaces="rdflib")
 
             for prefix in prefixes:
                 g.bind(prefix, rdflib.Namespace(prefixes[prefix]))
@@ -268,8 +293,6 @@ class Client:
 
                     if node_id not in uris:
 
-                        print(node_uri)
-
                         if self.is_download:
 
                             g_extra = self.download(node_uri)
@@ -280,7 +303,11 @@ class Client:
 
                                 # 主語がnode_uriのトリプルだけをgに追加
                                 for s, p, o in g_extra:
-                                    if str(s) == node_uri:
+                                    subject_str = str(s)
+
+                                    subject_str = self.fix_subject_str(subject_str)
+
+                                    if subject_str == node_uri:
                                         g.add((s, p, o))
                             
                         uris[node_id] = node_uri
@@ -401,31 +428,40 @@ class Client:
             'Accept': 'application/rdf+xml'
         }
 
-        # Sending a GET request to the URL
-        response = requests.get(url, headers=headers)
+        try:
 
-        # Checking if the request was successful
-        if response.status_code == 200:
+            # Sending a GET request to the URL
+            response = requests.get(url, headers=headers)
 
-            tree = etree.fromstring(response.content)
+            # Checking if the request was successful
+            if response.status_code == 200:
 
-            # XML Namespace for RDF
-            rdf_ns = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}"
             
-            # Remove all nodeID attributes
-            for element in tree.xpath('//*[@rdf:nodeID]', namespaces={'rdf': "http://www.w3.org/1999/02/22-rdf-syntax-ns#"}):
-                element.attrib.pop(rdf_ns + 'nodeID')
+                tree = etree.fromstring(response.content)
 
-            modified_xml = etree.tostring(tree, pretty_print=True).decode('utf-8')
+                # XML Namespace for RDF
+                rdf_ns = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}"
+                
+                # Remove all nodeID attributes
+                for element in tree.xpath('//*[@rdf:nodeID]', namespaces={'rdf': "http://www.w3.org/1999/02/22-rdf-syntax-ns#"}):
+                    element.attrib.pop(rdf_ns + 'nodeID')
 
-            g = Graph()
+                modified_xml = etree.tostring(tree, pretty_print=True).decode('utf-8')
 
-            g.parse(data=modified_xml, format='xml')
+                g = Graph(bind_namespaces="rdflib")
 
-            # g.serialize(destination='output.ttl', format='turtle')
+                g.parse(data=modified_xml, format='xml')
 
-            return g
-        else:
-            print("Failed to retrieve RDF data. Status code:", response.status_code)
+                # g.serialize(destination='output.ttl', format='turtle')
+
+                return g
+            
+            else:
+                if self.verbose:
+                    print("Failed to retrieve RDF data. Status code:", response.status_code)
+            
+        except Exception as e:
+            if self.verbose:
+                print("Failed to parse RDF data:", e)
 
         return None
