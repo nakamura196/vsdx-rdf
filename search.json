@@ -1,0 +1,52 @@
+[
+  {
+    "objectID": "visualize.html",
+    "href": "visualize.html",
+    "title": "visualize",
+    "section": "",
+    "text": "source\n\nVisualizeClient\n\n VisualizeClient ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\nsource\n\n\nVisualizeClient.graph_draw_by_kanzaki\n\n VisualizeClient.graph_draw_by_kanzaki (text, output_path, gtype='png')\n\n*指定されたRDF/Turtle形式のテキストデータをグラフとして可視化し、結果をPNGファイルとして保存します。\nArgs: text (str): RDFデータを表すテキスト、Turtle形式。 output_path (str): 生成されたPNGファイルの保存先パス。*",
+    "crumbs": [
+      "visualize"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "vsdx-rdf",
+    "section": "",
+    "text": "vsdx-rdf is a Python library for extracting RDF data from Visio files (.vsdx). It is based on the vsdx library, which is a Python library for reading and writing Visio files.",
+    "crumbs": [
+      "vsdx-rdf"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "vsdx-rdf",
+    "section": "Install",
+    "text": "Install\npip install git+https://github.com/nakamura196/vsdx-rdf.git",
+    "crumbs": [
+      "vsdx-rdf"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "vsdx-rdf",
+    "section": "How to use",
+    "text": "How to use\nIn the following example, we extract RDF data from a Visio file and print it.\n\nINPUT_FILE = \"./data/input/sample/ex.vsdx\"\nOUTPUT_FILE = \"./data/output\"\n\nClient.convert(INPUT_FILE, OUTPUT_FILE)\n\nProcessing: ./data/input/sample/ex.vsdx\n\n\ndepth (int): Optional; the depth of the graph to download, 0 by default.\n\nINPUT_FILE = \"./data/input/sample/*.vsdx\"\nOUTPUT_FILE = \"./data/output_extra\"\n\nClient.convert(INPUT_FILE, OUTPUT_FILE, depth=1, verbose=False)\n\nProcessing: ./data/input/sample/ex.vsdx",
+    "crumbs": [
+      "vsdx-rdf"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nClient\n\n Client (path:str, verbose:bool=False, depth:int=0)\n\n*Initialize the Client with a specific Visio file.\nArgs: path (str): The path to the Visio file. verbose (bool): Optional; True to enable detailed logging, False by default. depth (int): Optional; the depth of the graph to download, 0 by default.*\n\nsource\n\n\nClient.convert\n\n Client.convert (input_path:str, output_dir:str, depth:int=0,\n                 verbose:bool=False)\n\n*Convert all Visio files found at the specified input path to RDF and visualize them.\nArgs: input_path (str): A glob pattern to specify which files to process. output_dir (str): The directory where output files will be saved. depth (int): Optional; the depth of the graph to download, 0 by default.*\n\nsource\n\n\nClient.main\n\n Client.main (path:str, output_dir:str, page:int=-1, verbose:bool=False,\n              depth:int=0)\n\n*Process a single Visio file: parse it, convert it to RDF, and create visualizations.\nArgs: path (str): The path to the Visio file. output_dir (str): The directory to save output files. page (int): Optional; specify which page of the Visio file to process, -1 means all pages. verbose (bool): Optional; True for detailed output, False by default. depth (int): Optional; the depth of the graph to download, 0 by default.*\n\nsource\n\n\nClient.create_nodes_and_edges\n\n Client.create_nodes_and_edges (page_index:int)\n\n*Creates nodes and edges based on the provided page index from the visualization pages. It collects and organizes data about connections and shapes on each page.\nArgs: page_index (int): Index of the page to process. If -1, all pages are processed.*\n\nsource\n\n\nClient.determine_shape_name\n\n Client.determine_shape_name (child:Any, master_page_id:str)\n\n*Determines the shape name based on the child’s properties and master page ID.\nArgs: child (Any): The child shape object. master_page_id (str): ID of the master page to help determine the shape.\nReturns: str: A string indicating the shape type.*\n\nsource\n\n\nClient.convertToRdf\n\n Client.convertToRdf ()\n\n*Converts the nodes and edges to RDF format.\nReturns: str: The RDF data.*\n\nsource\n\n\nClient.save\n\n Client.save (output_dir)\n\n*Save the RDF data to a file.\nArgs: output_dir (str): The directory to save the output files.\nReturns: List[str]: A list of paths to the saved files.*\n\nsource\n\n\nClient.download\n\n Client.download (url:str)\n\n*Download RDF data from a specific URL.\nArgs: url (str): The URL to download RDF data from.\nReturns: Graph: An RDF graph object containing the downloaded data.*\n\nsource\n\n\nClient.fix_subject_str\n\n Client.fix_subject_str (subject_str:str)\n\n*Fixes the subject string by removing unnecessary parts.\nArgs: subject_str (str): The subject string to fix.\nReturns: str: The fixed subject string.*",
+    "crumbs": [
+      "core"
+    ]
+  }
+]
