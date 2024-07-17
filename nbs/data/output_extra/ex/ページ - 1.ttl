@@ -2,9 +2,9 @@
 @prefix ex: <http://example.org/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix ns1: <http://schema.org/> .
+@prefix ns1: <http://www.wikidata.org/prop/direct/> .
 @prefix ns2: <http://www.wikidata.org/prop/> .
-@prefix ns3: <http://www.wikidata.org/prop/direct/> .
+@prefix ns3: <http://schema.org/> .
 @prefix ns4: <http://www.wikidata.org/prop/direct-normalized/> .
 @prefix ns5: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -21,7 +21,7 @@ foaf:Person a rdfs:Class,
         foaf:Agent ;
     owl:disjointWith foaf:Organization,
         foaf:Project ;
-    owl:equivalentClass ns1:Person,
+    owl:equivalentClass ns3:Person,
         <http://www.w3.org/2000/10/swap/pim/contact#Person> ;
     ns5:term_status "stable" .
 
@@ -179,7 +179,7 @@ ex:subject ex:predicate "リテラル" .
         "蒙娜麗莎"@zh-tw,
         "Mona Lisa"@zu ;
     dcterms:title "Mona Lisa" ;
-    ns1:description "wêreldberoemde olieverfskildery, geskilder deur Leonardo da Vinci"@af,
+    ns3:description "wêreldberoemde olieverfskildery, geskilder deur Leonardo da Vinci"@af,
         "لوحة للرسام الإيطالي ليوناردو دانفشي"@ar,
         "pintura de Leonardo da Vinci"@ast,
         "Leonardo da Vinçinin çəkdiyi şəkil"@az,
@@ -246,7 +246,7 @@ ex:subject ex:predicate "リテラル" .
         "达·芬奇画作"@zh,
         "達文西畫作"@zh-hant,
         "達文西畫作"@zh-tw ;
-    ns1:name "Mona Lisa"@af,
+    ns3:name "Mona Lisa"@af,
         "ሞና ሊዛ"@am,
         "موناليزا"@ar,
         "موناليزا"@arz,
@@ -754,135 +754,135 @@ ex:subject ex:predicate "リテラル" .
     ns4:P269 <http://www.idref.fr/027396797/id> ;
     ns4:P349 <http://id.ndl.go.jp/auth/ndlna/001103889> ;
     ns4:P350 <https://data.rkd.nl/images/302327> ;
-    ns3:P1071 <http://www.wikidata.org/entity/Q2044> ;
-    ns3:P11386 "art/mona-lisa" ;
-    ns3:P11693 "2199945838" ;
-    ns3:P11859 "f63713db-caa9-18d4-d027-609a420acd40" ;
-    ns3:P12086 "Mona_Lisa" ;
-    ns3:P1212 "14153" ;
-    ns3:P12253 "nookipedia:Famous_painting" ;
-    ns3:P12385 "la-gioconda" ;
-    ns3:P1257 "61BB2(Lisa del Giocondo)11" ;
-    ns3:P127 <http://www.wikidata.org/entity/Q3591845> ;
-    ns3:P12754 "0000375952",
+    ns1:P1071 <http://www.wikidata.org/entity/Q2044> ;
+    ns1:P11386 "art/mona-lisa" ;
+    ns1:P11693 "2199945838" ;
+    ns1:P11859 "f63713db-caa9-18d4-d027-609a420acd40" ;
+    ns1:P12086 "Mona_Lisa" ;
+    ns1:P1212 "14153" ;
+    ns1:P12253 "nookipedia:Famous_painting" ;
+    ns1:P12385 "la-gioconda" ;
+    ns1:P1257 "61BB2(Lisa del Giocondo)11" ;
+    ns1:P127 <http://www.wikidata.org/entity/Q3591845> ;
+    ns1:P12754 "0000375952",
         "0001131259" ;
-    ns3:P12800 "de:Mona_Lisa",
+    ns1:P12800 "de:Mona_Lisa",
         "es:La_Gioconda",
         "eu:Gioconda",
         "fr:La_Joconde",
         "it:Gioconda" ;
-    ns3:P1296 "0030055" ;
-    ns3:P131 <http://www.wikidata.org/entity/Q161741>,
+    ns1:P1296 "0030055" ;
+    ns1:P131 <http://www.wikidata.org/entity/Q161741>,
         <http://www.wikidata.org/entity/Q90> ;
-    ns3:P1343 <http://www.wikidata.org/entity/Q66362718> ;
-    ns3:P136 <http://www.wikidata.org/entity/Q134307> ;
-    ns3:P1375 "000724248" ;
-    ns3:P138 <http://www.wikidata.org/entity/Q153032> ;
-    ns3:P1417 "topic/Mona-Lisa-painting" ;
-    ns3:P1476 "Portrait de Mona Lisa, dite la Joconde"@fr,
+    ns1:P1343 <http://www.wikidata.org/entity/Q66362718> ;
+    ns1:P136 <http://www.wikidata.org/entity/Q134307> ;
+    ns1:P1375 "000724248" ;
+    ns1:P138 <http://www.wikidata.org/entity/Q153032> ;
+    ns1:P1417 "topic/Mona-Lisa-painting" ;
+    ns1:P1476 "Portrait de Mona Lisa, dite la Joconde"@fr,
         "La Gioconda"@it,
         "モナ・リザ"@ja,
         "Mona Lisa"@pl ;
-    ns3:P1617 "50037aa3-5ec0-41ad-a323-0e5b2b2cc0fb" ;
-    ns3:P1669 "700000213" ;
-    ns3:P17 <http://www.wikidata.org/entity/Q142> ;
-    ns3:P170 <http://www.wikidata.org/entity/Q762> ;
-    ns3:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Mona%20Lisa%2C%20by%20Leonardo%20da%20Vinci%2C%20from%20C2RMF%20retouched.jpg> ;
-    ns3:P180 <http://www.wikidata.org/entity/Q107425>,
+    ns1:P1617 "50037aa3-5ec0-41ad-a323-0e5b2b2cc0fb" ;
+    ns1:P1669 "700000213" ;
+    ns1:P17 <http://www.wikidata.org/entity/Q142> ;
+    ns1:P170 <http://www.wikidata.org/entity/Q762> ;
+    ns1:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Mona%20Lisa%2C%20by%20Leonardo%20da%20Vinci%2C%20from%20C2RMF%20retouched.jpg> ;
+    ns1:P180 <http://www.wikidata.org/entity/Q107425>,
         <http://www.wikidata.org/entity/Q12280>,
         <http://www.wikidata.org/entity/Q153032>,
         <http://www.wikidata.org/entity/Q15324>,
         <http://www.wikidata.org/entity/Q2822867>,
         <http://www.wikidata.org/entity/Q527>,
         <http://www.wikidata.org/entity/Q8502> ;
-    ns3:P186 <http://www.wikidata.org/entity/Q106857865>,
+    ns1:P186 <http://www.wikidata.org/entity/Q106857865>,
         <http://www.wikidata.org/entity/Q296955> ;
-    ns3:P1889 <http://www.wikidata.org/entity/Q88154291> ;
-    ns3:P195 <http://www.wikidata.org/entity/Q3044768> ;
-    ns3:P2048 77.0 ;
-    ns3:P2049 53.0 ;
-    ns3:P214 "180757281",
+    ns1:P1889 <http://www.wikidata.org/entity/Q88154291> ;
+    ns1:P195 <http://www.wikidata.org/entity/Q3044768> ;
+    ns1:P2048 77.0 ;
+    ns1:P2049 53.0 ;
+    ns1:P214 "180757281",
         "259855831" ;
-    ns3:P217 "INV 779",
+    ns1:P217 "INV 779",
         "MR 316" ;
-    ns3:P227 "4074156-4" ;
-    ns3:P2344 "8e279ee1-f842-4eb3-994d-797ca8562c09" ;
-    ns3:P244 "n98092274" ;
-    ns3:P2561 "the portrait of Mona Lisa"@en,
+    ns1:P227 "4074156-4" ;
+    ns1:P2344 "8e279ee1-f842-4eb3-994d-797ca8562c09" ;
+    ns1:P244 "n98092274" ;
+    ns1:P2561 "the portrait of Mona Lisa"@en,
         "Portrait de Mona Lisa"@fr,
         "Portrait de Monna Lisa"@fr,
         "il ritratto di Mona Lisa"@it ;
-    ns3:P2581 "03571983n" ;
-    ns3:P268 "11944800v" ;
-    ns3:P269 "027396797" ;
-    ns3:P276 <http://www.wikidata.org/entity/Q10292830> ;
-    ns3:P31 <http://www.wikidata.org/entity/Q3305213> ;
-    ns3:P3219 "la-joconde-portrait-de-mona-lisa" ;
-    ns3:P3222 "gioconda",
+    ns1:P2581 "03571983n" ;
+    ns1:P268 "11944800v" ;
+    ns1:P269 "027396797" ;
+    ns1:P276 <http://www.wikidata.org/entity/Q10292830> ;
+    ns1:P31 <http://www.wikidata.org/entity/Q3305213> ;
+    ns1:P3219 "la-joconde-portrait-de-mona-lisa" ;
+    ns1:P3222 "gioconda",
         "mona-lisa" ;
-    ns3:P3272 "34373" ;
-    ns3:P3293 "40006392" ;
-    ns3:P3417 "Mona-Lisa" ;
-    ns3:P347 "000PE025604" ;
-    ns3:P349 "001103889" ;
-    ns3:P350 "302327" ;
-    ns3:P3553 "19601527" ;
-    ns3:P373 "Mona Lisa" ;
-    ns3:P409 "35300571" ;
-    ns3:P4342 "Mona_Lisa" ;
-    ns3:P4619 "001530954" ;
-    ns3:P4761 "leonard-de-vinci_la-joconde_huile-sur-bois_1503" ;
-    ns3:P495 <http://www.wikidata.org/entity/Q148540> ;
-    ns3:P5008 <http://www.wikidata.org/entity/Q6173448> ;
-    ns3:P5019 "mona-lisa" ;
-    ns3:P528 "22",
+    ns1:P3272 "34373" ;
+    ns1:P3293 "40006392" ;
+    ns1:P3417 "Mona-Lisa" ;
+    ns1:P347 "000PE025604" ;
+    ns1:P349 "001103889" ;
+    ns1:P350 "302327" ;
+    ns1:P3553 "19601527" ;
+    ns1:P373 "Mona Lisa" ;
+    ns1:P409 "35300571" ;
+    ns1:P4342 "Mona_Lisa" ;
+    ns1:P4619 "001530954" ;
+    ns1:P4761 "leonard-de-vinci_la-joconde_huile-sur-bois_1503" ;
+    ns1:P495 <http://www.wikidata.org/entity/Q148540> ;
+    ns1:P5008 <http://www.wikidata.org/entity/Q6173448> ;
+    ns1:P5019 "mona-lisa" ;
+    ns1:P528 "22",
         "7",
         "XXV" ;
-    ns3:P571 "1503-01-01T00:00:00+00:00"^^xsd:dateTime ;
-    ns3:P5891 "70372360" ;
-    ns3:P5905 "4055-59011" ;
-    ns3:P6002 "leonardo-da-vinci/mona-lisa" ;
-    ns3:P6058 "images/Léonard_de_Vinci_la_Joconde/1002327",
+    ns1:P571 "1503-01-01T00:00:00+00:00"^^xsd:dateTime ;
+    ns1:P5891 "70372360" ;
+    ns1:P5905 "4055-59011" ;
+    ns1:P6002 "leonardo-da-vinci/mona-lisa" ;
+    ns1:P6058 "images/Léonard_de_Vinci_la_Joconde/1002327",
         "oeuvre/la_Joconde/125998",
         "videos/Léonard_de_Vinci_la_Joconde/1309358" ;
-    ns3:P608 <http://www.wikidata.org/entity/Q14619895>,
+    ns1:P608 <http://www.wikidata.org/entity/Q14619895>,
         <http://www.wikidata.org/entity/Q14619896>,
         <http://www.wikidata.org/entity/Q15087813> ;
-    ns3:P6200 "crejv07yqe2t" ;
-    ns3:P6216 <http://www.wikidata.org/entity/Q19652> ;
-    ns3:P625 "Point(2.3354 48.8601)"^^geo:wktLiteral ;
-    ns3:P6262 "de.memory-alpha:Mona_Lisa",
+    ns1:P6200 "crejv07yqe2t" ;
+    ns1:P6216 <http://www.wikidata.org/entity/Q19652> ;
+    ns1:P625 "Point(2.3354 48.8601)"^^geo:wktLiteral ;
+    ns1:P6262 "de.memory-alpha:Mona_Lisa",
         "fr.memory-alpha:Portrait_de_Mona_Lisa",
         "memory-alpha:Mona_Lisa",
         "memory-beta:Mona_Lisa",
         "nl.memory-alpha:Mona_Lisa",
         "ru.tardis:Мона_Лиза",
         "tardis:Mona_Lisa" ;
-    ns3:P6332 "la-joconde" ;
-    ns3:P6405 "leonardo-mona-lisa" ;
-    ns3:P646 "/m/0jbg2" ;
-    ns3:P6573 "Mona_Lisa" ;
-    ns3:P6760 "1871" ;
-    ns3:P6900 "モナ・リザ" ;
-    ns3:P691 "aun2006372368" ;
-    ns3:P7420 <http://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20da%20vinci%2C%20la%20gioconda%2C%201503-06%20circa.jpg> ;
-    ns3:P793 <http://www.wikidata.org/entity/Q22340494>,
+    ns1:P6332 "la-joconde" ;
+    ns1:P6405 "leonardo-mona-lisa" ;
+    ns1:P646 "/m/0jbg2" ;
+    ns1:P6573 "Mona_Lisa" ;
+    ns1:P6760 "1871" ;
+    ns1:P6900 "モナ・リザ" ;
+    ns1:P691 "aun2006372368" ;
+    ns1:P7420 <http://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20da%20vinci%2C%20la%20gioconda%2C%201503-06%20circa.jpg> ;
+    ns1:P793 <http://www.wikidata.org/entity/Q22340494>,
         <http://www.wikidata.org/entity/Q2727213>,
         <http://www.wikidata.org/entity/Q6160> ;
-    ns3:P7982 "41651" ;
-    ns3:P8179 "ncf12135486" ;
-    ns3:P8189 "987007590416605171" ;
-    ns3:P8313 "Mona_Lisa" ;
-    ns3:P8349 "4888" ;
-    ns3:P88 <http://www.wikidata.org/entity/Q1395822> ;
-    ns3:P910 <http://www.wikidata.org/entity/Q13369744> ;
-    ns3:P921 <http://www.wikidata.org/entity/Q153032> ;
-    ns3:P9394 "010062370" ;
-    ns3:P973 <https://focus.louvre.fr/sites/default/files/GG10-le-vrai-visage-de-monna-lisa.pdf>,
+    ns1:P7982 "41651" ;
+    ns1:P8179 "ncf12135486" ;
+    ns1:P8189 "987007590416605171" ;
+    ns1:P8313 "Mona_Lisa" ;
+    ns1:P8349 "4888" ;
+    ns1:P88 <http://www.wikidata.org/entity/Q1395822> ;
+    ns1:P910 <http://www.wikidata.org/entity/Q13369744> ;
+    ns1:P921 <http://www.wikidata.org/entity/Q153032> ;
+    ns1:P9394 "010062370" ;
+    ns1:P973 <https://focus.louvre.fr/sites/default/files/GG10-le-vrai-visage-de-monna-lisa.pdf>,
         <https://www.louvre.fr/decouvrir/le-palais/de-la-joconde-aux-noces-de-cana>,
         <https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana>,
         <https://www.louvre.fr/es/explora/el-palacio/de-la-gioconda-a-las-bodas-de-cana>,
         <https://www.louvre.fr/zh-hans/tansuofaxian/lufugongjianzhuqun/cong-mengnalisha-dao-jianadehunli>,
         <https://www.wga.hu/html/l/leonardo/04/0monalis.html> ;
-    ns3:P989 <http://commons.wikimedia.org/wiki/Special:FilePath/Es-La%20Gioconda-article.ogg> .
+    ns1:P989 <http://commons.wikimedia.org/wiki/Special:FilePath/Es-La%20Gioconda-article.ogg> .
 
