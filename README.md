@@ -19,7 +19,7 @@ In the following example, we extract RDF data from a Visio file and
 print it.
 
 ``` python
-INPUT_FILE = "./data/input/sample/*.vsdx"
+INPUT_FILE = "./data/input/sample/ex.vsdx"
 OUTPUT_FILE = "./data/output"
 
 Client.convert(INPUT_FILE, OUTPUT_FILE)
@@ -33,12 +33,7 @@ depth (int): Optional; the depth of the graph to download, 0 by default.
 INPUT_FILE = "./data/input/sample/*.vsdx"
 OUTPUT_FILE = "./data/output_extra"
 
-Client.convert(INPUT_FILE, OUTPUT_FILE, depth=1)
+Client.convert(INPUT_FILE, OUTPUT_FILE, depth=1, verbose=False)
 ```
 
     Processing: ./data/input/sample/ex.vsdx
-
-    100%|██████████| 10/10 [00:00<00:00, 218453.33it/s]
-    100%|██████████| 10/10 [00:00<00:00, 221920.85it/s]
-    100%|██████████| 10/10 [00:00<00:00, 263792.70it/s]
-    100%|██████████| 10/10 [00:00<00:00, 245280.94it/s]

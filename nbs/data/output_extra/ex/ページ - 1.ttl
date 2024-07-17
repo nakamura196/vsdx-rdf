@@ -2,9 +2,9 @@
 @prefix ex: <http://example.org/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix ns1: <http://www.wikidata.org/prop/direct/> .
-@prefix ns2: <http://www.wikidata.org/prop/> .
-@prefix ns3: <http://schema.org/> .
+@prefix ns1: <http://schema.org/> .
+@prefix ns2: <http://www.wikidata.org/prop/direct/> .
+@prefix ns3: <http://www.wikidata.org/prop/> .
 @prefix ns4: <http://www.wikidata.org/prop/direct-normalized/> .
 @prefix ns5: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -21,7 +21,7 @@ foaf:Person a rdfs:Class,
         foaf:Agent ;
     owl:disjointWith foaf:Organization,
         foaf:Project ;
-    owl:equivalentClass ns3:Person,
+    owl:equivalentClass ns1:Person,
         <http://www.w3.org/2000/10/swap/pim/contact#Person> ;
     ns5:term_status "stable" .
 
@@ -179,7 +179,7 @@ ex:subject ex:predicate "リテラル" .
         "蒙娜麗莎"@zh-tw,
         "Mona Lisa"@zu ;
     dcterms:title "Mona Lisa" ;
-    ns3:description "wêreldberoemde olieverfskildery, geskilder deur Leonardo da Vinci"@af,
+    ns1:description "wêreldberoemde olieverfskildery, geskilder deur Leonardo da Vinci"@af,
         "لوحة للرسام الإيطالي ليوناردو دانفشي"@ar,
         "pintura de Leonardo da Vinci"@ast,
         "Leonardo da Vinçinin çəkdiyi şəkil"@az,
@@ -246,7 +246,7 @@ ex:subject ex:predicate "リテラル" .
         "达·芬奇画作"@zh,
         "達文西畫作"@zh-hant,
         "達文西畫作"@zh-tw ;
-    ns3:name "Mona Lisa"@af,
+    ns1:name "Mona Lisa"@af,
         "ሞና ሊዛ"@am,
         "موناليزا"@ar,
         "موناليزا"@arz,
@@ -602,148 +602,148 @@ ex:subject ex:predicate "リテラル" .
         "蒙娜丽莎"@zh-sg,
         "蒙娜麗莎"@zh-tw,
         "Mona Lisa"@zu ;
-    ns2:P1071 <http://www.wikidata.org/entity/statement/Q12418-90621bde-4baa-ebf5-d509-b934b3831375> ;
-    ns2:P11386 <http://www.wikidata.org/entity/statement/Q12418-33a4fe6f-413f-c6fc-833d-6700ab20f8b6> ;
-    ns2:P11693 <http://www.wikidata.org/entity/statement/Q12418-40D8A4E3-EF12-41A6-B0C2-316E74E4F6CB> ;
-    ns2:P11859 <http://www.wikidata.org/entity/statement/Q12418-43ea799c-4be3-4826-50d3-d1aab961add1> ;
-    ns2:P12086 <http://www.wikidata.org/entity/statement/Q12418-9DCB9C1E-446D-4399-BFF1-D6A68A49B3C6> ;
-    ns2:P1212 <http://www.wikidata.org/entity/statement/Q12418-e7b416ea-45b7-4400-3e49-943e98c8c9cc> ;
-    ns2:P12253 <http://www.wikidata.org/entity/statement/Q12418-12E27D0D-6D94-4A52-A747-FAFC431E3E3C> ;
-    ns2:P12385 <http://www.wikidata.org/entity/statement/Q12418-d2706f0f-20d8-4216-a8d3-e6d3ea187e2b> ;
-    ns2:P1257 <http://www.wikidata.org/entity/statement/Q12418-4b8ecef0-4865-3a3f-dd49-62ce7ba0c71f> ;
-    ns2:P127 <http://www.wikidata.org/entity/statement/Q12418-3815b54c-41ae-055d-122e-192699fbcb09>,
+    ns3:P1071 <http://www.wikidata.org/entity/statement/Q12418-90621bde-4baa-ebf5-d509-b934b3831375> ;
+    ns3:P11386 <http://www.wikidata.org/entity/statement/Q12418-33a4fe6f-413f-c6fc-833d-6700ab20f8b6> ;
+    ns3:P11693 <http://www.wikidata.org/entity/statement/Q12418-40D8A4E3-EF12-41A6-B0C2-316E74E4F6CB> ;
+    ns3:P11859 <http://www.wikidata.org/entity/statement/Q12418-43ea799c-4be3-4826-50d3-d1aab961add1> ;
+    ns3:P12086 <http://www.wikidata.org/entity/statement/Q12418-9DCB9C1E-446D-4399-BFF1-D6A68A49B3C6> ;
+    ns3:P1212 <http://www.wikidata.org/entity/statement/Q12418-e7b416ea-45b7-4400-3e49-943e98c8c9cc> ;
+    ns3:P12253 <http://www.wikidata.org/entity/statement/Q12418-12E27D0D-6D94-4A52-A747-FAFC431E3E3C> ;
+    ns3:P12385 <http://www.wikidata.org/entity/statement/Q12418-d2706f0f-20d8-4216-a8d3-e6d3ea187e2b> ;
+    ns3:P1257 <http://www.wikidata.org/entity/statement/Q12418-4b8ecef0-4865-3a3f-dd49-62ce7ba0c71f> ;
+    ns3:P127 <http://www.wikidata.org/entity/statement/Q12418-3815b54c-41ae-055d-122e-192699fbcb09>,
         <http://www.wikidata.org/entity/statement/q12418-AABCC68B-E48E-4E29-BEFA-04969D58BDF2> ;
-    ns2:P12754 <http://www.wikidata.org/entity/statement/Q12418-8228120E-F239-4E7F-9704-530CA6192BFD>,
+    ns3:P12754 <http://www.wikidata.org/entity/statement/Q12418-8228120E-F239-4E7F-9704-530CA6192BFD>,
         <http://www.wikidata.org/entity/statement/Q12418-BD32FC54-302D-4289-8A6D-4A827D1A51D7> ;
-    ns2:P12800 <http://www.wikidata.org/entity/statement/Q12418-31DE14DB-7AEB-48F1-AB45-A9CD59B1D65B>,
+    ns3:P12800 <http://www.wikidata.org/entity/statement/Q12418-31DE14DB-7AEB-48F1-AB45-A9CD59B1D65B>,
         <http://www.wikidata.org/entity/statement/Q12418-8445CFEF-3AE0-42E0-A0F8-EECB9BB9BBB2>,
         <http://www.wikidata.org/entity/statement/Q12418-A22D302C-1C9D-4A1A-8CAD-806D15E6F404>,
         <http://www.wikidata.org/entity/statement/Q12418-BD59C453-FF6A-493D-8AE3-D5740605DD6A>,
         <http://www.wikidata.org/entity/statement/Q12418-D8EE43AF-0474-4291-9B48-6EA811153DA5> ;
-    ns2:P1296 <http://www.wikidata.org/entity/statement/Q12418-1FDD69C2-0F9A-40B7-AF48-4FF48A106878> ;
-    ns2:P131 <http://www.wikidata.org/entity/statement/Q12418-9821d47a-4aef-44d9-ade5-479954463e81>,
+    ns3:P1296 <http://www.wikidata.org/entity/statement/Q12418-1FDD69C2-0F9A-40B7-AF48-4FF48A106878> ;
+    ns3:P131 <http://www.wikidata.org/entity/statement/Q12418-9821d47a-4aef-44d9-ade5-479954463e81>,
         <http://www.wikidata.org/entity/statement/Q12418-e2abb123-4c53-d1dd-4368-329d1f9f36ca> ;
-    ns2:P1343 <http://www.wikidata.org/entity/statement/Q12418-adbdfcbd-4056-c482-b4c6-4f3b14971b85> ;
-    ns2:P136 <http://www.wikidata.org/entity/statement/Q12418-17d2ec7a-4710-b013-1fdd-50e78328b80f> ;
-    ns2:P1375 <http://www.wikidata.org/entity/statement/q12418-e9e9f845-419d-c2b1-8e95-339b3727e84d> ;
-    ns2:P138 <http://www.wikidata.org/entity/statement/Q12418-e8c05806-4f41-7264-7a97-a14960cc0230> ;
-    ns2:P1417 <http://www.wikidata.org/entity/statement/Q12418-220058A5-3D5C-48B9-BE00-15BBA02F277F> ;
-    ns2:P1476 <http://www.wikidata.org/entity/statement/Q12418-295bbdd0-4d7f-6fba-288c-c8d5aa10ab39>,
+    ns3:P1343 <http://www.wikidata.org/entity/statement/Q12418-adbdfcbd-4056-c482-b4c6-4f3b14971b85> ;
+    ns3:P136 <http://www.wikidata.org/entity/statement/Q12418-17d2ec7a-4710-b013-1fdd-50e78328b80f> ;
+    ns3:P1375 <http://www.wikidata.org/entity/statement/q12418-e9e9f845-419d-c2b1-8e95-339b3727e84d> ;
+    ns3:P138 <http://www.wikidata.org/entity/statement/Q12418-e8c05806-4f41-7264-7a97-a14960cc0230> ;
+    ns3:P1417 <http://www.wikidata.org/entity/statement/Q12418-220058A5-3D5C-48B9-BE00-15BBA02F277F> ;
+    ns3:P1476 <http://www.wikidata.org/entity/statement/Q12418-295bbdd0-4d7f-6fba-288c-c8d5aa10ab39>,
         <http://www.wikidata.org/entity/statement/Q12418-4b7b9a7f-4c13-a586-2afc-458dc2c66081>,
         <http://www.wikidata.org/entity/statement/Q12418-64103bc0-49f9-c125-268c-1bdf1f0b23cb>,
         <http://www.wikidata.org/entity/statement/Q12418-6f02ff6e-4dfc-741e-4609-553afa558dfa>,
         <http://www.wikidata.org/entity/statement/Q12418-7FB620FC-DB1C-443D-B74D-80B1733E26A1> ;
-    ns2:P1617 <http://www.wikidata.org/entity/statement/Q12418-5B013E31-BF22-4183-821A-CDA26D8ABD9D> ;
-    ns2:P1669 <http://www.wikidata.org/entity/statement/Q12418-74D66435-2597-459D-A0BB-304E62A5E966> ;
-    ns2:P17 <http://www.wikidata.org/entity/statement/Q12418-14cfa943-4f3d-53f5-5ec8-f4ff0720c396> ;
-    ns2:P170 <http://www.wikidata.org/entity/statement/q12418-2E0B47A1-1915-44F8-AB71-28FF037C2E43> ;
-    ns2:P18 <http://www.wikidata.org/entity/statement/Q12418-ea3d60a7-486a-a6e6-a250-061c124409bc>,
+    ns3:P1617 <http://www.wikidata.org/entity/statement/Q12418-5B013E31-BF22-4183-821A-CDA26D8ABD9D> ;
+    ns3:P1669 <http://www.wikidata.org/entity/statement/Q12418-74D66435-2597-459D-A0BB-304E62A5E966> ;
+    ns3:P17 <http://www.wikidata.org/entity/statement/Q12418-14cfa943-4f3d-53f5-5ec8-f4ff0720c396> ;
+    ns3:P170 <http://www.wikidata.org/entity/statement/q12418-2E0B47A1-1915-44F8-AB71-28FF037C2E43> ;
+    ns3:P18 <http://www.wikidata.org/entity/statement/Q12418-ea3d60a7-486a-a6e6-a250-061c124409bc>,
         <http://www.wikidata.org/entity/statement/Q12418-f46c2c72-47f6-89b0-dff5-14628008e89c> ;
-    ns2:P180 <http://www.wikidata.org/entity/statement/Q12418-8723f7cc-45ca-0cb2-a7dc-34c7a1e2f0ff>,
+    ns3:P180 <http://www.wikidata.org/entity/statement/Q12418-8723f7cc-45ca-0cb2-a7dc-34c7a1e2f0ff>,
         <http://www.wikidata.org/entity/statement/q12418-8FD166AA-37B3-4A86-BD77-F145ACA9BF27>,
         <http://www.wikidata.org/entity/statement/q12418-A26B2373-DFA7-4CAF-9D67-71F1E2E3C330>,
         <http://www.wikidata.org/entity/statement/q12418-BEF4A50C-8A43-47C8-BA64-DCAF093F76CF>,
         <http://www.wikidata.org/entity/statement/q12418-d7312b7d-4e68-c15d-d9a4-6e9dc182d6ab>,
         <http://www.wikidata.org/entity/statement/q12418-e177d21d-4cda-a086-3933-6f54dfb731f2>,
         <http://www.wikidata.org/entity/statement/q12418-e4879aa4-4375-983c-822d-2bba0b0bcbee> ;
-    ns2:P186 <http://www.wikidata.org/entity/statement/Q12418-053f412b-4541-92f8-ebba-f73c568f5c9b>,
+    ns3:P186 <http://www.wikidata.org/entity/statement/Q12418-053f412b-4541-92f8-ebba-f73c568f5c9b>,
         <http://www.wikidata.org/entity/statement/Q12418-76f83465-4049-4741-6eb3-ca180b346625>,
         <http://www.wikidata.org/entity/statement/q12418-B76F63CF-7E3D-435F-8694-7F743F494B71> ;
-    ns2:P1889 <http://www.wikidata.org/entity/statement/Q12418-a46c4adb-4f14-c4c6-c363-1a42bda8e212> ;
-    ns2:P195 <http://www.wikidata.org/entity/statement/q12418-7F4C12E8-F8D3-4E33-9BD8-AEFC454C7FDE> ;
-    ns2:P2048 <http://www.wikidata.org/entity/statement/Q12418-b4004341-4231-c50f-b70f-b29c0c1e4e20> ;
-    ns2:P2049 <http://www.wikidata.org/entity/statement/Q12418-5a9b61a4-423f-05d5-58ad-857cfa0ac5bf> ;
-    ns2:P214 <http://www.wikidata.org/entity/statement/q12418-5106FE46-9EC4-439A-9309-22662683D77B>,
+    ns3:P1889 <http://www.wikidata.org/entity/statement/Q12418-a46c4adb-4f14-c4c6-c363-1a42bda8e212> ;
+    ns3:P195 <http://www.wikidata.org/entity/statement/q12418-7F4C12E8-F8D3-4E33-9BD8-AEFC454C7FDE> ;
+    ns3:P2048 <http://www.wikidata.org/entity/statement/Q12418-b4004341-4231-c50f-b70f-b29c0c1e4e20> ;
+    ns3:P2049 <http://www.wikidata.org/entity/statement/Q12418-5a9b61a4-423f-05d5-58ad-857cfa0ac5bf> ;
+    ns3:P214 <http://www.wikidata.org/entity/statement/q12418-5106FE46-9EC4-439A-9309-22662683D77B>,
         <http://www.wikidata.org/entity/statement/q12418-C1FFB3C4-6196-4FA9-A041-E36A3A4FD007> ;
-    ns2:P217 <http://www.wikidata.org/entity/statement/Q12418-05a05ce9-4281-b236-410e-b041db0b16f3>,
+    ns3:P217 <http://www.wikidata.org/entity/statement/Q12418-05a05ce9-4281-b236-410e-b041db0b16f3>,
         <http://www.wikidata.org/entity/statement/q12418-9131E8B4-0804-4F4A-96DE-AC409421057B> ;
-    ns2:P227 <http://www.wikidata.org/entity/statement/Q12418-91CCBFC4-0627-45FD-832B-FF28EF0FF3FC> ;
-    ns2:P2344 <http://www.wikidata.org/entity/statement/Q12418-c1f729fd-45c5-374a-3546-3d0cfc4c82e4> ;
-    ns2:P2348 <http://www.wikidata.org/entity/statement/Q12418-0BB9EAE4-B748-4998-A0B3-717FE008B161> ;
-    ns2:P244 <http://www.wikidata.org/entity/statement/q12418-dc52a675-4442-7c95-82fb-36df3f5e018c> ;
-    ns2:P2561 <http://www.wikidata.org/entity/statement/Q12418-40f39f0f-4a12-78cc-3d51-917d85a134e1>,
+    ns3:P227 <http://www.wikidata.org/entity/statement/Q12418-91CCBFC4-0627-45FD-832B-FF28EF0FF3FC> ;
+    ns3:P2344 <http://www.wikidata.org/entity/statement/Q12418-c1f729fd-45c5-374a-3546-3d0cfc4c82e4> ;
+    ns3:P2348 <http://www.wikidata.org/entity/statement/Q12418-0BB9EAE4-B748-4998-A0B3-717FE008B161> ;
+    ns3:P244 <http://www.wikidata.org/entity/statement/q12418-dc52a675-4442-7c95-82fb-36df3f5e018c> ;
+    ns3:P2561 <http://www.wikidata.org/entity/statement/Q12418-40f39f0f-4a12-78cc-3d51-917d85a134e1>,
         <http://www.wikidata.org/entity/statement/Q12418-51268853-4475-bddb-5f65-1266e29e5d9b>,
         <http://www.wikidata.org/entity/statement/Q12418-5c6c5123-4f08-130d-1abb-5d4ff24800f1>,
         <http://www.wikidata.org/entity/statement/Q12418-9271d542-431f-53fb-61f4-c5b5651ad7f6>,
         <http://www.wikidata.org/entity/statement/Q12418-9c5ccda5-47c2-4102-08d4-618d30d916c0> ;
-    ns2:P2581 <http://www.wikidata.org/entity/statement/Q12418-D7782C3E-DA32-4634-B453-752619169BDD> ;
-    ns2:P268 <http://www.wikidata.org/entity/statement/q12418-96f908ed-4450-afbc-7b7f-56b50c89f00a> ;
-    ns2:P269 <http://www.wikidata.org/entity/statement/q12418-c5440eaa-475a-e9c2-7bf1-5b8fa8e33722> ;
-    ns2:P276 <http://www.wikidata.org/entity/statement/Q12418-67BBD0F2-0DBE-42A5-9874-ED80A10CC824>,
+    ns3:P2581 <http://www.wikidata.org/entity/statement/Q12418-D7782C3E-DA32-4634-B453-752619169BDD> ;
+    ns3:P268 <http://www.wikidata.org/entity/statement/q12418-96f908ed-4450-afbc-7b7f-56b50c89f00a> ;
+    ns3:P269 <http://www.wikidata.org/entity/statement/q12418-c5440eaa-475a-e9c2-7bf1-5b8fa8e33722> ;
+    ns3:P276 <http://www.wikidata.org/entity/statement/Q12418-67BBD0F2-0DBE-42A5-9874-ED80A10CC824>,
         <http://www.wikidata.org/entity/statement/Q12418-e1246307-4255-c803-42d7-8dc60bfddb83> ;
-    ns2:P31 <http://www.wikidata.org/entity/statement/q12418-DD432D35-3CFA-4D71-9F93-4C6FE610A787> ;
-    ns2:P3219 <http://www.wikidata.org/entity/statement/Q12418-C1E55D86-94BA-4927-B8EA-5F13B3AA9D33> ;
-    ns2:P3222 <http://www.wikidata.org/entity/statement/Q12418-7FE6477F-4E06-40A7-8ECD-BB6BA700C528>,
+    ns3:P31 <http://www.wikidata.org/entity/statement/q12418-DD432D35-3CFA-4D71-9F93-4C6FE610A787> ;
+    ns3:P3219 <http://www.wikidata.org/entity/statement/Q12418-C1E55D86-94BA-4927-B8EA-5F13B3AA9D33> ;
+    ns3:P3222 <http://www.wikidata.org/entity/statement/Q12418-7FE6477F-4E06-40A7-8ECD-BB6BA700C528>,
         <http://www.wikidata.org/entity/statement/Q12418-E00F3640-DC41-4545-955B-10E7ED40A1FA> ;
-    ns2:P3272 <http://www.wikidata.org/entity/statement/Q12418-eba06f19-4caa-ad2f-7a82-20a180dff914> ;
-    ns2:P3293 <http://www.wikidata.org/entity/statement/Q12418-336D3522-972D-47A5-A62F-118AD0366917> ;
-    ns2:P3417 <http://www.wikidata.org/entity/statement/Q12418-7D8D7604-9D0A-46BA-80B5-26CD59C884D8> ;
-    ns2:P347 <http://www.wikidata.org/entity/statement/q12418-6FADAEB4-D625-45A3-8D37-727EC8EECA8E> ;
-    ns2:P349 <http://www.wikidata.org/entity/statement/Q12418-939b6b25-46df-0128-8993-d360325682f0> ;
-    ns2:P350 <http://www.wikidata.org/entity/statement/Q12418-e430e7aa-4dcd-e01a-3a18-0196e6dfdd58> ;
-    ns2:P3553 <http://www.wikidata.org/entity/statement/Q12418-46E0D0C5-21F3-4048-B30A-0F274098EAC0> ;
-    ns2:P373 <http://www.wikidata.org/entity/statement/q12418-4121C5C9-3225-4542-AE36-16EDE11D638D> ;
-    ns2:P409 <http://www.wikidata.org/entity/statement/Q12418-70E38096-AADD-49A4-8437-9367EBD0292D> ;
-    ns2:P4342 <http://www.wikidata.org/entity/statement/Q12418-df306be9-4fce-e761-8e45-8420ece6fa05> ;
-    ns2:P4619 <http://www.wikidata.org/entity/statement/q12418-06e49f54-44d3-57f0-e5bf-197f34f167c4> ;
-    ns2:P4761 <http://www.wikidata.org/entity/statement/Q12418-02E0AA28-7F39-4634-B25C-8734B377E726> ;
-    ns2:P495 <http://www.wikidata.org/entity/statement/Q12418-8d4ab278-46f1-7513-af76-32f4425786a8> ;
-    ns2:P5008 <http://www.wikidata.org/entity/statement/Q12418-3D2FD4E1-1836-4AA8-A4BD-00A73D82C058> ;
-    ns2:P5019 <http://www.wikidata.org/entity/statement/Q12418-7FF2E7B1-5842-4247-AAAE-7CD6D693D61D> ;
-    ns2:P528 <http://www.wikidata.org/entity/statement/Q12418-3102a089-4240-2f55-8126-6caad920047f>,
+    ns3:P3272 <http://www.wikidata.org/entity/statement/Q12418-eba06f19-4caa-ad2f-7a82-20a180dff914> ;
+    ns3:P3293 <http://www.wikidata.org/entity/statement/Q12418-336D3522-972D-47A5-A62F-118AD0366917> ;
+    ns3:P3417 <http://www.wikidata.org/entity/statement/Q12418-7D8D7604-9D0A-46BA-80B5-26CD59C884D8> ;
+    ns3:P347 <http://www.wikidata.org/entity/statement/q12418-6FADAEB4-D625-45A3-8D37-727EC8EECA8E> ;
+    ns3:P349 <http://www.wikidata.org/entity/statement/Q12418-939b6b25-46df-0128-8993-d360325682f0> ;
+    ns3:P350 <http://www.wikidata.org/entity/statement/Q12418-e430e7aa-4dcd-e01a-3a18-0196e6dfdd58> ;
+    ns3:P3553 <http://www.wikidata.org/entity/statement/Q12418-46E0D0C5-21F3-4048-B30A-0F274098EAC0> ;
+    ns3:P373 <http://www.wikidata.org/entity/statement/q12418-4121C5C9-3225-4542-AE36-16EDE11D638D> ;
+    ns3:P409 <http://www.wikidata.org/entity/statement/Q12418-70E38096-AADD-49A4-8437-9367EBD0292D> ;
+    ns3:P4342 <http://www.wikidata.org/entity/statement/Q12418-df306be9-4fce-e761-8e45-8420ece6fa05> ;
+    ns3:P4619 <http://www.wikidata.org/entity/statement/q12418-06e49f54-44d3-57f0-e5bf-197f34f167c4> ;
+    ns3:P4761 <http://www.wikidata.org/entity/statement/Q12418-02E0AA28-7F39-4634-B25C-8734B377E726> ;
+    ns3:P495 <http://www.wikidata.org/entity/statement/Q12418-8d4ab278-46f1-7513-af76-32f4425786a8> ;
+    ns3:P5008 <http://www.wikidata.org/entity/statement/Q12418-3D2FD4E1-1836-4AA8-A4BD-00A73D82C058> ;
+    ns3:P5019 <http://www.wikidata.org/entity/statement/Q12418-7FF2E7B1-5842-4247-AAAE-7CD6D693D61D> ;
+    ns3:P528 <http://www.wikidata.org/entity/statement/Q12418-3102a089-4240-2f55-8126-6caad920047f>,
         <http://www.wikidata.org/entity/statement/Q12418-52f752ed-4e02-ae84-be25-bc2189710924>,
         <http://www.wikidata.org/entity/statement/Q12418-8cf6d035-4d5a-8a45-3b16-7edf122c48f9> ;
-    ns2:P571 <http://www.wikidata.org/entity/statement/Q12418-8EDF7B01-3F71-4DA7-8B52-8C26242F0293> ;
-    ns2:P5891 <http://www.wikidata.org/entity/statement/Q12418-527dbc68-4207-a92c-be2a-0270a1de3457> ;
-    ns2:P5905 <http://www.wikidata.org/entity/statement/Q12418-2B879F0A-3112-4F1B-8CFF-BA6EF40AB6B4> ;
-    ns2:P6002 <http://www.wikidata.org/entity/statement/Q12418-65d52927-489a-3b8c-3a3a-ff56148601c6> ;
-    ns2:P6058 <http://www.wikidata.org/entity/statement/Q12418-85773f53-4555-420a-b23b-2607c5545357>,
+    ns3:P571 <http://www.wikidata.org/entity/statement/Q12418-8EDF7B01-3F71-4DA7-8B52-8C26242F0293> ;
+    ns3:P5891 <http://www.wikidata.org/entity/statement/Q12418-527dbc68-4207-a92c-be2a-0270a1de3457> ;
+    ns3:P5905 <http://www.wikidata.org/entity/statement/Q12418-2B879F0A-3112-4F1B-8CFF-BA6EF40AB6B4> ;
+    ns3:P6002 <http://www.wikidata.org/entity/statement/Q12418-65d52927-489a-3b8c-3a3a-ff56148601c6> ;
+    ns3:P6058 <http://www.wikidata.org/entity/statement/Q12418-85773f53-4555-420a-b23b-2607c5545357>,
         <http://www.wikidata.org/entity/statement/Q12418-e5bc442b-4e7f-ecbc-abcf-30549df0c5c0>,
         <http://www.wikidata.org/entity/statement/Q12418-f5937fcd-4052-7d01-7fa3-6e301a2c2b41> ;
-    ns2:P608 <http://www.wikidata.org/entity/statement/Q12418-2c695ad0-4449-a5b2-2ad2-e17d7f54a1b7>,
+    ns3:P608 <http://www.wikidata.org/entity/statement/Q12418-2c695ad0-4449-a5b2-2ad2-e17d7f54a1b7>,
         <http://www.wikidata.org/entity/statement/q12418-46dad587-4658-af2b-cb18-48a7a18a333b>,
         <http://www.wikidata.org/entity/statement/q12418-e18ef191-4322-5c83-d769-2f9b6caa37b4> ;
-    ns2:P6200 <http://www.wikidata.org/entity/statement/Q12418-fc143011-44e5-46bc-a5ba-429a74fa653a> ;
-    ns2:P6216 <http://www.wikidata.org/entity/statement/Q12418-f55d2db5-42a8-3007-1303-bc69a5556983> ;
-    ns2:P625 <http://www.wikidata.org/entity/statement/Q12418-c1fa8c6f-4ad4-f9ae-b218-5ef5a51496e1> ;
-    ns2:P6262 <http://www.wikidata.org/entity/statement/Q12418-16BF2BB8-3915-4CBE-B1C6-F6AE15D740ED>,
+    ns3:P6200 <http://www.wikidata.org/entity/statement/Q12418-fc143011-44e5-46bc-a5ba-429a74fa653a> ;
+    ns3:P6216 <http://www.wikidata.org/entity/statement/Q12418-f55d2db5-42a8-3007-1303-bc69a5556983> ;
+    ns3:P625 <http://www.wikidata.org/entity/statement/Q12418-c1fa8c6f-4ad4-f9ae-b218-5ef5a51496e1> ;
+    ns3:P6262 <http://www.wikidata.org/entity/statement/Q12418-16BF2BB8-3915-4CBE-B1C6-F6AE15D740ED>,
         <http://www.wikidata.org/entity/statement/Q12418-27D5E63D-9AC7-4072-90EC-526E1ADBD9B3>,
         <http://www.wikidata.org/entity/statement/Q12418-325111B8-71F6-412C-B40A-E69073D60C74>,
         <http://www.wikidata.org/entity/statement/Q12418-35F04316-14A5-4FBC-A0DE-161FE28D7867>,
         <http://www.wikidata.org/entity/statement/Q12418-40B3C2BB-8F3F-4764-A00D-19B64326E6C7>,
         <http://www.wikidata.org/entity/statement/Q12418-C97BDD72-32A8-469E-AF6D-E69D80578309>,
         <http://www.wikidata.org/entity/statement/Q12418-F79B67E8-CED9-4EB0-BFF3-770D75058CB4> ;
-    ns2:P6332 <http://www.wikidata.org/entity/statement/Q12418-7acc1145-44fd-2863-7da8-5648ad98e1b3> ;
-    ns2:P6405 <http://www.wikidata.org/entity/statement/Q12418-93cfbfe1-4dbb-0a90-f54d-03c9f3a96161> ;
-    ns2:P646 <http://www.wikidata.org/entity/statement/Q12418-A5D88FCF-36CF-49F7-B188-F22B53481C56> ;
-    ns2:P6573 <http://www.wikidata.org/entity/statement/Q12418-273D772D-D831-45DF-9E41-4C2C8AF15456> ;
-    ns2:P6760 <http://www.wikidata.org/entity/statement/Q12418-12104324-4dfa-2aa4-7a7e-e4bce4ffb6b2> ;
-    ns2:P6900 <http://www.wikidata.org/entity/statement/Q12418-9c08a93a-4591-561d-36a9-78083ae0a3fa> ;
-    ns2:P691 <http://www.wikidata.org/entity/statement/Q12418-da3e8503-49e4-f0a5-2468-cd4a311306a5> ;
-    ns2:P7420 <http://www.wikidata.org/entity/statement/Q12418-8954F187-7A30-471A-BEF0-A09BD833E2FE> ;
-    ns2:P793 <http://www.wikidata.org/entity/statement/Q12418-012933D1-7E71-4BA8-8EB4-6AB75E6EC1C4>,
+    ns3:P6332 <http://www.wikidata.org/entity/statement/Q12418-7acc1145-44fd-2863-7da8-5648ad98e1b3> ;
+    ns3:P6405 <http://www.wikidata.org/entity/statement/Q12418-93cfbfe1-4dbb-0a90-f54d-03c9f3a96161> ;
+    ns3:P646 <http://www.wikidata.org/entity/statement/Q12418-A5D88FCF-36CF-49F7-B188-F22B53481C56> ;
+    ns3:P6573 <http://www.wikidata.org/entity/statement/Q12418-273D772D-D831-45DF-9E41-4C2C8AF15456> ;
+    ns3:P6760 <http://www.wikidata.org/entity/statement/Q12418-12104324-4dfa-2aa4-7a7e-e4bce4ffb6b2> ;
+    ns3:P6900 <http://www.wikidata.org/entity/statement/Q12418-9c08a93a-4591-561d-36a9-78083ae0a3fa> ;
+    ns3:P691 <http://www.wikidata.org/entity/statement/Q12418-da3e8503-49e4-f0a5-2468-cd4a311306a5> ;
+    ns3:P7420 <http://www.wikidata.org/entity/statement/Q12418-8954F187-7A30-471A-BEF0-A09BD833E2FE> ;
+    ns3:P793 <http://www.wikidata.org/entity/statement/Q12418-012933D1-7E71-4BA8-8EB4-6AB75E6EC1C4>,
         <http://www.wikidata.org/entity/statement/Q12418-1b5f8b25-4f94-fe63-3bb8-8b9c3cdba3ec>,
         <http://www.wikidata.org/entity/statement/Q12418-4ca7f16a-4474-50ae-9e47-1918c51bf046>,
         <http://www.wikidata.org/entity/statement/Q12418-dfca0223-42e2-6aa6-4a13-81aea1e376d6>,
         <http://www.wikidata.org/entity/statement/Q12418-f280c3a3-4a80-b0f8-36f2-3c6792e4d96e>,
         <http://www.wikidata.org/entity/statement/q12418-fa589ef7-476b-f009-f733-406920a8fdf2> ;
-    ns2:P7982 <http://www.wikidata.org/entity/statement/Q12418-EECE60E6-E4D4-49FA-B5E0-D33718D96DD4> ;
-    ns2:P8179 <http://www.wikidata.org/entity/statement/q12418-2ed929ed-4fad-c252-7b04-b2d20b3eb33b> ;
-    ns2:P8189 <http://www.wikidata.org/entity/statement/q12418-b0b05565-47f5-4c40-9860-43f703fa5ad1> ;
-    ns2:P8313 <http://www.wikidata.org/entity/statement/Q12418-6355E9E8-7B82-4F77-85F0-DA14BFDD98EC> ;
-    ns2:P8349 <http://www.wikidata.org/entity/statement/Q12418-FD3A8DA0-D268-406E-BF1F-18A03D4426B2> ;
-    ns2:P88 <http://www.wikidata.org/entity/statement/q12418-239AAF7E-AC0D-4B3E-8DE8-BCAC9228954E> ;
-    ns2:P910 <http://www.wikidata.org/entity/statement/Q12418-7D19A1E2-FF9B-4A29-A472-C17243347FD4> ;
-    ns2:P921 <http://www.wikidata.org/entity/statement/Q12418-159e863c-4179-b425-8c14-712e3c43d21f>,
+    ns3:P7982 <http://www.wikidata.org/entity/statement/Q12418-EECE60E6-E4D4-49FA-B5E0-D33718D96DD4> ;
+    ns3:P8179 <http://www.wikidata.org/entity/statement/q12418-2ed929ed-4fad-c252-7b04-b2d20b3eb33b> ;
+    ns3:P8189 <http://www.wikidata.org/entity/statement/q12418-b0b05565-47f5-4c40-9860-43f703fa5ad1> ;
+    ns3:P8313 <http://www.wikidata.org/entity/statement/Q12418-6355E9E8-7B82-4F77-85F0-DA14BFDD98EC> ;
+    ns3:P8349 <http://www.wikidata.org/entity/statement/Q12418-FD3A8DA0-D268-406E-BF1F-18A03D4426B2> ;
+    ns3:P88 <http://www.wikidata.org/entity/statement/q12418-239AAF7E-AC0D-4B3E-8DE8-BCAC9228954E> ;
+    ns3:P910 <http://www.wikidata.org/entity/statement/Q12418-7D19A1E2-FF9B-4A29-A472-C17243347FD4> ;
+    ns3:P921 <http://www.wikidata.org/entity/statement/Q12418-159e863c-4179-b425-8c14-712e3c43d21f>,
         <http://www.wikidata.org/entity/statement/Q12418-f864dd3a-4315-9623-5584-e7656f88188d> ;
-    ns2:P9394 <http://www.wikidata.org/entity/statement/Q12418-4e22a734-4d08-a6a2-29e5-236e62de9766> ;
-    ns2:P973 <http://www.wikidata.org/entity/statement/Q12418-24D08E09-CCD7-457F-8572-B0A9A1AEB94B>,
+    ns3:P9394 <http://www.wikidata.org/entity/statement/Q12418-4e22a734-4d08-a6a2-29e5-236e62de9766> ;
+    ns3:P973 <http://www.wikidata.org/entity/statement/Q12418-24D08E09-CCD7-457F-8572-B0A9A1AEB94B>,
         <http://www.wikidata.org/entity/statement/Q12418-5ff2fdea-4782-90dc-6706-49ffb2dc8667>,
         <http://www.wikidata.org/entity/statement/Q12418-6ddb8b8f-4030-037f-eb68-97556b86698d>,
         <http://www.wikidata.org/entity/statement/Q12418-841bf667-43a6-b2df-75df-61c58c5e6dfc>,
         <http://www.wikidata.org/entity/statement/Q12418-d968788e-4d0d-a8af-95ff-a8ec2e633eb2>,
         <http://www.wikidata.org/entity/statement/Q12418-ef0ced9b-4fab-ef65-cdc9-1217e1b08931> ;
-    ns2:P989 <http://www.wikidata.org/entity/statement/Q12418-08AD80EF-8159-4811-ADF2-9E5DE07C33CC> ;
+    ns3:P989 <http://www.wikidata.org/entity/statement/Q12418-08AD80EF-8159-4811-ADF2-9E5DE07C33CC> ;
     ns4:P1617 <http://www.bbc.co.uk/things/50037aa3-5ec0-41ad-a323-0e5b2b2cc0fb#id> ;
     ns4:P214 <http://viaf.org/viaf/180757281>,
         <http://viaf.org/viaf/259855831> ;
@@ -754,135 +754,135 @@ ex:subject ex:predicate "リテラル" .
     ns4:P269 <http://www.idref.fr/027396797/id> ;
     ns4:P349 <http://id.ndl.go.jp/auth/ndlna/001103889> ;
     ns4:P350 <https://data.rkd.nl/images/302327> ;
-    ns1:P1071 <http://www.wikidata.org/entity/Q2044> ;
-    ns1:P11386 "art/mona-lisa" ;
-    ns1:P11693 "2199945838" ;
-    ns1:P11859 "f63713db-caa9-18d4-d027-609a420acd40" ;
-    ns1:P12086 "Mona_Lisa" ;
-    ns1:P1212 "14153" ;
-    ns1:P12253 "nookipedia:Famous_painting" ;
-    ns1:P12385 "la-gioconda" ;
-    ns1:P1257 "61BB2(Lisa del Giocondo)11" ;
-    ns1:P127 <http://www.wikidata.org/entity/Q3591845> ;
-    ns1:P12754 "0000375952",
+    ns2:P1071 <http://www.wikidata.org/entity/Q2044> ;
+    ns2:P11386 "art/mona-lisa" ;
+    ns2:P11693 "2199945838" ;
+    ns2:P11859 "f63713db-caa9-18d4-d027-609a420acd40" ;
+    ns2:P12086 "Mona_Lisa" ;
+    ns2:P1212 "14153" ;
+    ns2:P12253 "nookipedia:Famous_painting" ;
+    ns2:P12385 "la-gioconda" ;
+    ns2:P1257 "61BB2(Lisa del Giocondo)11" ;
+    ns2:P127 <http://www.wikidata.org/entity/Q3591845> ;
+    ns2:P12754 "0000375952",
         "0001131259" ;
-    ns1:P12800 "de:Mona_Lisa",
+    ns2:P12800 "de:Mona_Lisa",
         "es:La_Gioconda",
         "eu:Gioconda",
         "fr:La_Joconde",
         "it:Gioconda" ;
-    ns1:P1296 "0030055" ;
-    ns1:P131 <http://www.wikidata.org/entity/Q161741>,
+    ns2:P1296 "0030055" ;
+    ns2:P131 <http://www.wikidata.org/entity/Q161741>,
         <http://www.wikidata.org/entity/Q90> ;
-    ns1:P1343 <http://www.wikidata.org/entity/Q66362718> ;
-    ns1:P136 <http://www.wikidata.org/entity/Q134307> ;
-    ns1:P1375 "000724248" ;
-    ns1:P138 <http://www.wikidata.org/entity/Q153032> ;
-    ns1:P1417 "topic/Mona-Lisa-painting" ;
-    ns1:P1476 "Portrait de Mona Lisa, dite la Joconde"@fr,
+    ns2:P1343 <http://www.wikidata.org/entity/Q66362718> ;
+    ns2:P136 <http://www.wikidata.org/entity/Q134307> ;
+    ns2:P1375 "000724248" ;
+    ns2:P138 <http://www.wikidata.org/entity/Q153032> ;
+    ns2:P1417 "topic/Mona-Lisa-painting" ;
+    ns2:P1476 "Portrait de Mona Lisa, dite la Joconde"@fr,
         "La Gioconda"@it,
         "モナ・リザ"@ja,
         "Mona Lisa"@pl ;
-    ns1:P1617 "50037aa3-5ec0-41ad-a323-0e5b2b2cc0fb" ;
-    ns1:P1669 "700000213" ;
-    ns1:P17 <http://www.wikidata.org/entity/Q142> ;
-    ns1:P170 <http://www.wikidata.org/entity/Q762> ;
-    ns1:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Mona%20Lisa%2C%20by%20Leonardo%20da%20Vinci%2C%20from%20C2RMF%20retouched.jpg> ;
-    ns1:P180 <http://www.wikidata.org/entity/Q107425>,
+    ns2:P1617 "50037aa3-5ec0-41ad-a323-0e5b2b2cc0fb" ;
+    ns2:P1669 "700000213" ;
+    ns2:P17 <http://www.wikidata.org/entity/Q142> ;
+    ns2:P170 <http://www.wikidata.org/entity/Q762> ;
+    ns2:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Mona%20Lisa%2C%20by%20Leonardo%20da%20Vinci%2C%20from%20C2RMF%20retouched.jpg> ;
+    ns2:P180 <http://www.wikidata.org/entity/Q107425>,
         <http://www.wikidata.org/entity/Q12280>,
         <http://www.wikidata.org/entity/Q153032>,
         <http://www.wikidata.org/entity/Q15324>,
         <http://www.wikidata.org/entity/Q2822867>,
         <http://www.wikidata.org/entity/Q527>,
         <http://www.wikidata.org/entity/Q8502> ;
-    ns1:P186 <http://www.wikidata.org/entity/Q106857865>,
+    ns2:P186 <http://www.wikidata.org/entity/Q106857865>,
         <http://www.wikidata.org/entity/Q296955> ;
-    ns1:P1889 <http://www.wikidata.org/entity/Q88154291> ;
-    ns1:P195 <http://www.wikidata.org/entity/Q3044768> ;
-    ns1:P2048 77.0 ;
-    ns1:P2049 53.0 ;
-    ns1:P214 "180757281",
+    ns2:P1889 <http://www.wikidata.org/entity/Q88154291> ;
+    ns2:P195 <http://www.wikidata.org/entity/Q3044768> ;
+    ns2:P2048 77.0 ;
+    ns2:P2049 53.0 ;
+    ns2:P214 "180757281",
         "259855831" ;
-    ns1:P217 "INV 779",
+    ns2:P217 "INV 779",
         "MR 316" ;
-    ns1:P227 "4074156-4" ;
-    ns1:P2344 "8e279ee1-f842-4eb3-994d-797ca8562c09" ;
-    ns1:P244 "n98092274" ;
-    ns1:P2561 "the portrait of Mona Lisa"@en,
+    ns2:P227 "4074156-4" ;
+    ns2:P2344 "8e279ee1-f842-4eb3-994d-797ca8562c09" ;
+    ns2:P244 "n98092274" ;
+    ns2:P2561 "the portrait of Mona Lisa"@en,
         "Portrait de Mona Lisa"@fr,
         "Portrait de Monna Lisa"@fr,
         "il ritratto di Mona Lisa"@it ;
-    ns1:P2581 "03571983n" ;
-    ns1:P268 "11944800v" ;
-    ns1:P269 "027396797" ;
-    ns1:P276 <http://www.wikidata.org/entity/Q10292830> ;
-    ns1:P31 <http://www.wikidata.org/entity/Q3305213> ;
-    ns1:P3219 "la-joconde-portrait-de-mona-lisa" ;
-    ns1:P3222 "gioconda",
+    ns2:P2581 "03571983n" ;
+    ns2:P268 "11944800v" ;
+    ns2:P269 "027396797" ;
+    ns2:P276 <http://www.wikidata.org/entity/Q10292830> ;
+    ns2:P31 <http://www.wikidata.org/entity/Q3305213> ;
+    ns2:P3219 "la-joconde-portrait-de-mona-lisa" ;
+    ns2:P3222 "gioconda",
         "mona-lisa" ;
-    ns1:P3272 "34373" ;
-    ns1:P3293 "40006392" ;
-    ns1:P3417 "Mona-Lisa" ;
-    ns1:P347 "000PE025604" ;
-    ns1:P349 "001103889" ;
-    ns1:P350 "302327" ;
-    ns1:P3553 "19601527" ;
-    ns1:P373 "Mona Lisa" ;
-    ns1:P409 "35300571" ;
-    ns1:P4342 "Mona_Lisa" ;
-    ns1:P4619 "001530954" ;
-    ns1:P4761 "leonard-de-vinci_la-joconde_huile-sur-bois_1503" ;
-    ns1:P495 <http://www.wikidata.org/entity/Q148540> ;
-    ns1:P5008 <http://www.wikidata.org/entity/Q6173448> ;
-    ns1:P5019 "mona-lisa" ;
-    ns1:P528 "22",
+    ns2:P3272 "34373" ;
+    ns2:P3293 "40006392" ;
+    ns2:P3417 "Mona-Lisa" ;
+    ns2:P347 "000PE025604" ;
+    ns2:P349 "001103889" ;
+    ns2:P350 "302327" ;
+    ns2:P3553 "19601527" ;
+    ns2:P373 "Mona Lisa" ;
+    ns2:P409 "35300571" ;
+    ns2:P4342 "Mona_Lisa" ;
+    ns2:P4619 "001530954" ;
+    ns2:P4761 "leonard-de-vinci_la-joconde_huile-sur-bois_1503" ;
+    ns2:P495 <http://www.wikidata.org/entity/Q148540> ;
+    ns2:P5008 <http://www.wikidata.org/entity/Q6173448> ;
+    ns2:P5019 "mona-lisa" ;
+    ns2:P528 "22",
         "7",
         "XXV" ;
-    ns1:P571 "1503-01-01T00:00:00+00:00"^^xsd:dateTime ;
-    ns1:P5891 "70372360" ;
-    ns1:P5905 "4055-59011" ;
-    ns1:P6002 "leonardo-da-vinci/mona-lisa" ;
-    ns1:P6058 "images/Léonard_de_Vinci_la_Joconde/1002327",
+    ns2:P571 "1503-01-01T00:00:00+00:00"^^xsd:dateTime ;
+    ns2:P5891 "70372360" ;
+    ns2:P5905 "4055-59011" ;
+    ns2:P6002 "leonardo-da-vinci/mona-lisa" ;
+    ns2:P6058 "images/Léonard_de_Vinci_la_Joconde/1002327",
         "oeuvre/la_Joconde/125998",
         "videos/Léonard_de_Vinci_la_Joconde/1309358" ;
-    ns1:P608 <http://www.wikidata.org/entity/Q14619895>,
+    ns2:P608 <http://www.wikidata.org/entity/Q14619895>,
         <http://www.wikidata.org/entity/Q14619896>,
         <http://www.wikidata.org/entity/Q15087813> ;
-    ns1:P6200 "crejv07yqe2t" ;
-    ns1:P6216 <http://www.wikidata.org/entity/Q19652> ;
-    ns1:P625 "Point(2.3354 48.8601)"^^geo:wktLiteral ;
-    ns1:P6262 "de.memory-alpha:Mona_Lisa",
+    ns2:P6200 "crejv07yqe2t" ;
+    ns2:P6216 <http://www.wikidata.org/entity/Q19652> ;
+    ns2:P625 "Point(2.3354 48.8601)"^^geo:wktLiteral ;
+    ns2:P6262 "de.memory-alpha:Mona_Lisa",
         "fr.memory-alpha:Portrait_de_Mona_Lisa",
         "memory-alpha:Mona_Lisa",
         "memory-beta:Mona_Lisa",
         "nl.memory-alpha:Mona_Lisa",
         "ru.tardis:Мона_Лиза",
         "tardis:Mona_Lisa" ;
-    ns1:P6332 "la-joconde" ;
-    ns1:P6405 "leonardo-mona-lisa" ;
-    ns1:P646 "/m/0jbg2" ;
-    ns1:P6573 "Mona_Lisa" ;
-    ns1:P6760 "1871" ;
-    ns1:P6900 "モナ・リザ" ;
-    ns1:P691 "aun2006372368" ;
-    ns1:P7420 <http://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20da%20vinci%2C%20la%20gioconda%2C%201503-06%20circa.jpg> ;
-    ns1:P793 <http://www.wikidata.org/entity/Q22340494>,
+    ns2:P6332 "la-joconde" ;
+    ns2:P6405 "leonardo-mona-lisa" ;
+    ns2:P646 "/m/0jbg2" ;
+    ns2:P6573 "Mona_Lisa" ;
+    ns2:P6760 "1871" ;
+    ns2:P6900 "モナ・リザ" ;
+    ns2:P691 "aun2006372368" ;
+    ns2:P7420 <http://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20da%20vinci%2C%20la%20gioconda%2C%201503-06%20circa.jpg> ;
+    ns2:P793 <http://www.wikidata.org/entity/Q22340494>,
         <http://www.wikidata.org/entity/Q2727213>,
         <http://www.wikidata.org/entity/Q6160> ;
-    ns1:P7982 "41651" ;
-    ns1:P8179 "ncf12135486" ;
-    ns1:P8189 "987007590416605171" ;
-    ns1:P8313 "Mona_Lisa" ;
-    ns1:P8349 "4888" ;
-    ns1:P88 <http://www.wikidata.org/entity/Q1395822> ;
-    ns1:P910 <http://www.wikidata.org/entity/Q13369744> ;
-    ns1:P921 <http://www.wikidata.org/entity/Q153032> ;
-    ns1:P9394 "010062370" ;
-    ns1:P973 <https://focus.louvre.fr/sites/default/files/GG10-le-vrai-visage-de-monna-lisa.pdf>,
+    ns2:P7982 "41651" ;
+    ns2:P8179 "ncf12135486" ;
+    ns2:P8189 "987007590416605171" ;
+    ns2:P8313 "Mona_Lisa" ;
+    ns2:P8349 "4888" ;
+    ns2:P88 <http://www.wikidata.org/entity/Q1395822> ;
+    ns2:P910 <http://www.wikidata.org/entity/Q13369744> ;
+    ns2:P921 <http://www.wikidata.org/entity/Q153032> ;
+    ns2:P9394 "010062370" ;
+    ns2:P973 <https://focus.louvre.fr/sites/default/files/GG10-le-vrai-visage-de-monna-lisa.pdf>,
         <https://www.louvre.fr/decouvrir/le-palais/de-la-joconde-aux-noces-de-cana>,
         <https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana>,
         <https://www.louvre.fr/es/explora/el-palacio/de-la-gioconda-a-las-bodas-de-cana>,
         <https://www.louvre.fr/zh-hans/tansuofaxian/lufugongjianzhuqun/cong-mengnalisha-dao-jianadehunli>,
         <https://www.wga.hu/html/l/leonardo/04/0monalis.html> ;
-    ns1:P989 <http://commons.wikimedia.org/wiki/Special:FilePath/Es-La%20Gioconda-article.ogg> .
+    ns2:P989 <http://commons.wikimedia.org/wiki/Special:FilePath/Es-La%20Gioconda-article.ogg> .
 
