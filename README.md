@@ -27,15 +27,18 @@ Client.convert(INPUT_FILE, OUTPUT_FILE)
 
     Processing: ./data/input/sample/ex.vsdx
 
-`is_download` is a flag that specifies whether to download the linked
-RDF data. If `is_download` is `True`, the linked RDF data is downloaded
-and stored in output files.
+depth (int): Optional; the depth of the graph to download, 0 by default.
 
 ``` python
 INPUT_FILE = "./data/input/sample/*.vsdx"
 OUTPUT_FILE = "./data/output_extra"
 
-Client.convert(INPUT_FILE, OUTPUT_FILE, is_download=True)
+Client.convert(INPUT_FILE, OUTPUT_FILE, depth=1)
 ```
 
     Processing: ./data/input/sample/ex.vsdx
+
+    100%|██████████| 10/10 [00:00<00:00, 218453.33it/s]
+    100%|██████████| 10/10 [00:00<00:00, 221920.85it/s]
+    100%|██████████| 10/10 [00:00<00:00, 263792.70it/s]
+    100%|██████████| 10/10 [00:00<00:00, 245280.94it/s]

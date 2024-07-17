@@ -4,3 +4,4 @@ nbdev
 pyvis
 requests
 lxml
+tqdm

@@ -15,19 +15,20 @@ from typing import Dict, Any, List
 import requests
 from lxml import etree
 from rdflib import Graph
+from tqdm import tqdm
 
 # %% ../nbs/00_core.ipynb 4
 class Client:
 
     @staticmethod
-    def convert(input_path: str, output_dir: str, is_download: bool = False) -> None:
+    def convert(input_path: str, output_dir: str, depth: int = 0, verbose: bool = False) -> None:
         """
         Convert all Visio files found at the specified input path to RDF and visualize them.
 
         Args:
             input_path (str): A glob pattern to specify which files to process.
             output_dir (str): The directory where output files will be saved.
-            is_download (bool): Optional; True to download the files, False by default.
+            depth (int): Optional; the depth of the graph to download, 0 by default.
         """
         files = glob(input_path, recursive=True)
         files.sort()
@@ -41,12 +42,12 @@ class Client:
 
             # output_dir = "/Users/nakamura/Library/CloudStorage/OneDrive-TheUniversityofTokyo/visio/output/" + filename.split('/')[-2] + "/" + filename.split('/')[-1].replace('.vsdx', '')
             output_file_dir = output_dir + "/" + filename.split('/')[-1].replace('.vsdx', '')
-            Client.main(filename, output_file_dir , verbose=False, is_download=is_download) # False
+            Client.main(filename, output_file_dir , verbose=verbose, depth=depth) # False
             # , page=1 
             # break
 
     @staticmethod
-    def main(path: str, output_dir: str, page: int = -1, verbose: bool = False, is_download: bool = False) -> None:
+    def main(path: str, output_dir: str, page: int = -1, verbose: bool = False, depth: int = 0) -> None:
         """
         Process a single Visio file: parse it, convert it to RDF, and create visualizations.
 
@@ -55,10 +56,10 @@ class Client:
             output_dir (str): The directory to save output files.
             page (int): Optional; specify which page of the Visio file to process, -1 means all pages.
             verbose (bool): Optional; True for detailed output, False by default.
-            is_download (bool): Optional; True to download the file, False by default.
+            depth (int): Optional; the depth of the graph to download, 0 by default.
         """
 
-        client = Client(path, verbose=verbose, is_download=is_download)
+        client = Client(path, verbose=verbose, depth=depth)
 
         client.create_nodes_and_edges(page)
         client.convertToRdf()
@@ -80,19 +81,21 @@ class Client:
             VisualizeClient.graph_draw_by_kanzaki(text, output_path.replace(".png", ".svg"), gtype="svg")
 
 
-    def __init__(self, path, verbose=False, is_download=False):
+    def __init__(self, path: str, verbose: bool =False, depth: int = 0):
         """
         Initialize the Client with a specific Visio file.
 
         Args:
             path (str): The path to the Visio file.
             verbose (bool): Optional; True to enable detailed logging, False by default.
-            is_download (bool): Optional; True to download the file, False by default.
+            depth (int): Optional; the depth of the graph to download, 0 by default.
         """
         self.vis = VisioFile(path)
 
+        self.graphs = {}
+
         self.verbose = verbose
-        self.is_download = is_download
+        self.depth = depth
 
     def create_nodes_and_edges(self, page_index: int) -> None:
         """
@@ -215,6 +218,43 @@ class Client:
         '''
 
         return subject_str
+    
+    def recursive_download(self, g, node_uri, current_depth):
+        if current_depth < self.depth:  # 指定された深さに達していない場合に処理を続行
+
+            if self.verbose:
+                print("current_depth:", current_depth, "node_uri:", node_uri)
+
+            g_extra = self.download(node_uri)
+            if g_extra is not None:
+                for s, p, o in g_extra:
+                    subject_str = str(s)
+                    subject_str = self.fix_subject_str(subject_str)
+                    if subject_str == node_uri:
+                        g.add((s, p, o))  # 主語がnode_uriのトリプルだけをgに追加
+
+                # ここで再帰的に次のノードをダウンロード
+
+                o_set = set()
+
+                for s, p, o in g_extra:
+                    # oがURIの場合は再帰的にダウンロード
+                    if isinstance(o, rdflib.term.URIRef):
+                        # g = self.recursive_download(g, str(o), current_depth + 1)  # 対象オブジェクトを次のノードURIとして使用
+
+                        o_set.add(str(o))
+
+                # verboseの値によってtqdmを表示するかどうかを決定
+                if self.verbose:
+                    iterable = tqdm(list(o_set)[:10])
+                else:
+                    iterable = list(o_set)[:10]
+
+                for o in iterable:
+
+                    g = self.recursive_download(g, o, current_depth + 1)
+
+        return g
 
     def convertToRdf(self):
         """
@@ -293,7 +333,26 @@ class Client:
 
                     if node_id not in uris:
 
-                        if self.is_download:
+                        g = self.recursive_download(g, node_uri, 0)
+
+                        uris[node_id] = node_uri
+
+
+                        '''
+
+                        i = 0
+
+                        while i < self.depth:
+
+
+
+                            i += 1
+
+                        '''
+
+                        '''
+
+                        if self.depth:
 
                             g_extra = self.download(node_uri)
 
@@ -310,7 +369,9 @@ class Client:
                                     if subject_str == node_uri:
                                         g.add((s, p, o))
                             
-                        uris[node_id] = node_uri
+                        
+
+                        '''
 
                 else:
                         
@@ -428,6 +489,9 @@ class Client:
             'Accept': 'application/rdf+xml'
         }
 
+        if url in self.graphs:
+            return self.graphs[url]
+
         try:
 
             # Sending a GET request to the URL
@@ -454,14 +518,20 @@ class Client:
 
                 # g.serialize(destination='output.ttl', format='turtle')
 
+                self.graphs[url] = g
+
                 return g
             
             else:
                 if self.verbose:
                     print("Failed to retrieve RDF data. Status code:", response.status_code)
+
+                self.graphs[url] = None
             
         except Exception as e:
             if self.verbose:
                 print("Failed to parse RDF data:", e)
+
+            self.graphs[url] = None
 
         return None
